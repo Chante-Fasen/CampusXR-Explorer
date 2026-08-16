@@ -1,0 +1,19 @@
+{
+  "campus": "Kempton Park",
+  "locations": [
+    {
+      "id": "computer_lab",
+      "scene_name": "ComputerLabScene",
+      "label": "Computer Lab",
+      "thumbnail_asset": "thumbnails/computer_lab.jpg",
+      "hotspots": [
+        {
+          "id": "hs_001",
+          "world_position": { "x": 1.2, "y": 0.0, "z": -0.5 },
+          "overlay_type": "text",
+          "content": "This lab has 50 PCs available for student use."
+        }
+      ]
+    }
+  ]
+}
