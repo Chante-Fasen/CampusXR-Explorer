@@ -1,10 +1,10 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 // Finds the LocationData that matches the currently active scene,
 // so hotspot scripts and other components can pull the right data
 // without needing to know how JSON parsing works.
-
 public class SceneDataLoader : MonoBehaviour
 {
     // The location data matching this scene - other scripts
@@ -13,13 +13,14 @@ public class SceneDataLoader : MonoBehaviour
 
     void Start()
     {
-        // Safety check - make sure JsonLoader has already run
-        // and successfully loaded the campus data
-        if (JsonLoader.LoadedData == null)
-        {
-            Debug.LogError("SceneDataLoader: campus data not loaded yet. Check JsonLoader ran first.");
-            return;
-        }
+        StartCoroutine(ResolveLocation());
+    }
+
+    IEnumerator ResolveLocation()
+    {
+        // JsonLoader now loads asynchronously (required for Android),
+        // so wait for it to finish rather than assuming it already has.
+        yield return new WaitUntil(() => JsonLoader.IsLoaded);
 
         // Get the name of the scene currently open
         string currentSceneName = SceneManager.GetActiveScene().name;

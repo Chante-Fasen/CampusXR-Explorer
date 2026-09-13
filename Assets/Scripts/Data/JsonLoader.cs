@@ -1,35 +1,57 @@
+using System.Collections;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Networking;
 
 // Reads campus_data.json from StreamingAssets and loads it into
-// memory on app startup. Other scripts can then access the data
-// via JsonLoader.LoadedData
-
+// memory on app startup. Other scripts access the data via
+// JsonLoader.LoadedData once IsLoaded is true.
 public class JsonLoader : MonoBehaviour
 {
     // Static so any other script can access the loaded data
     // without needing a reference to this specific GameObject
     public static CampusData LoadedData;
+    public static bool IsLoaded { get { return LoadedData != null; } }
 
     void Awake()
     {
-        // Build the full path to campus_data.json inside StreamingAssets
+        DontDestroyOnLoad(gameObject);
+        StartCoroutine(LoadCampusData());
+    }
+
+    IEnumerator LoadCampusData()
+    {
         string filePath = Path.Combine(Application.streamingAssetsPath, "campus_data.json");
+        string jsonText = null;
 
-        // Check the file actually exists before trying to read it
-        if (File.Exists(filePath))
+        // On Android, StreamingAssets is compressed inside the APK and is
+        // only reachable through a jar:file:// URL, so System.IO file access
+        // fails there. That path contains "://" and needs UnityWebRequest.
+        if (filePath.Contains("://"))
         {
-            // Read the raw JSON text from the file
-            string jsonText = File.ReadAllText(filePath);
+            using (UnityWebRequest req = UnityWebRequest.Get(filePath))
+            {
+                yield return req.SendWebRequest();
 
-            // Convert the JSON text into our CampusData object
-            LoadedData = JsonUtility.FromJson<CampusData>(jsonText);
-
-            Debug.Log("campus_data.json loaded successfully. Campus: " + LoadedData.campus);
+                if (req.result != UnityWebRequest.Result.Success)
+                {
+                    Debug.LogError("Failed to read campus_data.json: " + req.error);
+                    yield break;
+                }
+                jsonText = req.downloadHandler.text;
+            }
         }
         else
         {
-            Debug.LogError("campus_data.json not found at: " + filePath);
+            if (!File.Exists(filePath))
+            {
+                Debug.LogError("campus_data.json not found at: " + filePath);
+                yield break;
+            }
+            jsonText = File.ReadAllText(filePath);
         }
+
+        LoadedData = JsonUtility.FromJson<CampusData>(jsonText);
+        Debug.Log("campus_data.json loaded successfully. Campus: " + LoadedData.campus);
     }
 }

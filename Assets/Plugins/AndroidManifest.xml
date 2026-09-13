@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Firebase analytics needs network access. No storage permission is
+         required: all 360 media and audio ships inside the APK. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Declared but not required, so the APK still installs on phones
+         that have no headtracking hardware. -->
+    <uses-feature android:name="android.hardware.vr.headtracking"
+                  android:required="false" />
+
+    <!-- Gyroscope is needed for VR mode but not for standard phone mode,
+         so it must not be required or non-gyro phones cannot install. -->
+    <uses-feature android:name="android.hardware.sensor.gyroscope"
+                  android:required="false" />
+
+    <application android:label="@string/app_name"
+                 android:icon="@mipmap/app_icon">
+
+        <activity android:name="com.unity3d.player.UnityPlayerActivity"
+                  android:theme="@style/UnityThemeSelector"
+                  android:exported="true"
+                  android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <!-- Required for the app to appear and launch correctly
+                     from the Meta Quest library. -->
+                <category android:name="com.oculus.intent.category.VR" />
+            </intent-filter>
+
+            <meta-data android:name="unityplayer.UnityActivity"
+                       android:value="true" />
+        </activity>
+    </application>
+</manifest>
