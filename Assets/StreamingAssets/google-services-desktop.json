@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "107229437919",
+    "project_id": "immersive-ar-vr-campus-tour-bc",
+    "storage_bucket": "immersive-ar-vr-campus-tour-bc.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:107229437919:android:4003f5097c51fdea60ee6a",
+        "android_client_info": {
+          "package_name": "za.ac.belgiumcampus.campusxrexplorer"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCckQE0DjK4RyDJBqhjlmmZS0zYIa0ElP8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
