@@ -22,7 +22,7 @@ public class CameraController : MonoBehaviour
 
         if(Input.GetMouseButton(1) || Input.GetMouseButton(2))
         {
-            zoomAmount = Mathf.Clamp(zoomAmount + Input.GetAxis("Mouse Y") * zoomSpeed * Time.deltaTime, -5.0f, 5.0f);
+            zoomAmount = Mathf.Clamp(zoomAmount + Input.GetAxis("Mouse Y") * zoomSpeed * Time.deltaTime, -5.0f, 4.5f);
             Camera.main.transform.localPosition = new Vector3(0, 0, zoomAmount);
         }
     }
