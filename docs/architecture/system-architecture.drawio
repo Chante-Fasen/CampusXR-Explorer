@@ -1,0 +1,80 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="XoOGEF86dzoDfkhCbqcg">
+    <mxGraphModel dx="852" dy="476" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="muHNKbYn4QfDWdR_4j5X-1" parent="1" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;" value="CampusXR Explorer - Current System Architecture" vertex="1">
+          <mxGeometry height="60" width="380" x="172.5" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="muHNKbYn4QfDWdR_4j5X-4" edge="1" parent="1" source="muHNKbYn4QfDWdR_4j5X-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="muHNKbYn4QfDWdR_4j5X-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="muHNKbYn4QfDWdR_4j5X-2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="&lt;b&gt;Visitor / Prospective Student&lt;/b&gt;" vertex="1">
+          <mxGeometry height="60" width="230" x="250" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="muHNKbYn4QfDWdR_4j5X-6" edge="1" parent="1" source="muHNKbYn4QfDWdR_4j5X-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="muHNKbYn4QfDWdR_4j5X-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="muHNKbYn4QfDWdR_4j5X-3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="&lt;b&gt;Target Devices&lt;/b&gt;&lt;div&gt;&lt;br&gt;&lt;div&gt;Android smartphone&lt;/div&gt;&lt;div&gt;VR headset / Meta Quest&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="90" width="230" x="250" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="muHNKbYn4QfDWdR_4j5X-11" edge="1" parent="1" source="muHNKbYn4QfDWdR_4j5X-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="muHNKbYn4QfDWdR_4j5X-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="muHNKbYn4QfDWdR_4j5X-12" edge="1" parent="1" source="muHNKbYn4QfDWdR_4j5X-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="muHNKbYn4QfDWdR_4j5X-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="muHNKbYn4QfDWdR_4j5X-13" edge="1" parent="1" source="muHNKbYn4QfDWdR_4j5X-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="muHNKbYn4QfDWdR_4j5X-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="muHNKbYn4QfDWdR_4j5X-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="&lt;b&gt;Unity 6 Application&lt;/b&gt;&lt;div&gt;&lt;br&gt;&lt;div&gt;Scenes, C# scripts, UI and runtime&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="230" x="250" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="muHNKbYn4QfDWdR_4j5X-19" edge="1" parent="1" source="muHNKbYn4QfDWdR_4j5X-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" target="muHNKbYn4QfDWdR_4j5X-14">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="100" y="560" />
+              <mxPoint x="307.5" y="560" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="muHNKbYn4QfDWdR_4j5X-7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="&lt;b&gt;User Interface&lt;/b&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Main Menu + Building Map&lt;/div&gt;&lt;div&gt;Settings/Help + Tour UI&lt;/div&gt;" vertex="1">
+          <mxGeometry height="90" width="160" x="20" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="muHNKbYn4QfDWdR_4j5X-15" edge="1" parent="1" source="muHNKbYn4QfDWdR_4j5X-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="muHNKbYn4QfDWdR_4j5X-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="muHNKbYn4QfDWdR_4j5X-8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="&lt;b&gt;Navigation&amp;nbsp;&lt;/b&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Scene transitions&lt;/div&gt;&lt;div&gt;Direct site/ location navigation&lt;/div&gt;" vertex="1">
+          <mxGeometry height="90" width="190" x="270" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="muHNKbYn4QfDWdR_4j5X-20" edge="1" parent="1" source="muHNKbYn4QfDWdR_4j5X-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" target="muHNKbYn4QfDWdR_4j5X-14">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="640" y="560" />
+              <mxPoint x="422.5" y="560" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="muHNKbYn4QfDWdR_4j5X-9" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="&lt;b&gt;XR / VR Layer&lt;/b&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;OpenXR + XR interaction Toolkit&lt;/div&gt;&lt;div&gt;XR rig/ VR interaction&lt;/div&gt;" vertex="1">
+          <mxGeometry height="90" width="180" x="550" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="muHNKbYn4QfDWdR_4j5X-25" edge="1" parent="1" source="muHNKbYn4QfDWdR_4j5X-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="muHNKbYn4QfDWdR_4j5X-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="muHNKbYn4QfDWdR_4j5X-26" edge="1" parent="1" source="muHNKbYn4QfDWdR_4j5X-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="muHNKbYn4QfDWdR_4j5X-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="muHNKbYn4QfDWdR_4j5X-14" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="&lt;font face=&quot;Helvetica&quot;&gt;&lt;b&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;360&lt;/span&gt;&lt;span style=&quot;font-size: 10.5pt;&quot;&gt;° &lt;/span&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Campus&lt;/font&gt;&lt;span style=&quot;font-size: 10.5pt;&quot;&gt; &lt;/span&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Experience&lt;/font&gt;&lt;/b&gt;&lt;/font&gt;&lt;div&gt;&lt;font face=&quot;Helvetica&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Helvetica&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Campus imagery + locations + multimedia&lt;/font&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Helvetica&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Hotspot system: Text + Images + Audio + Multimedia&amp;nbsp;&lt;/font&gt;&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="230" x="250" y="580" as="geometry" />
+        </mxCell>
+        <mxCell id="muHNKbYn4QfDWdR_4j5X-21" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="&lt;b&gt;Local Data Layer&lt;/b&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;jsonLoader + SceneDataLoader&lt;/div&gt;&lt;div&gt;StreamingAssets/campus_data.json&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="200" x="30" y="700" as="geometry" />
+        </mxCell>
+        <mxCell id="muHNKbYn4QfDWdR_4j5X-22" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="&lt;b&gt;Analytics Layer&lt;/b&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;AnalyticsLogger&lt;/div&gt;&lt;div&gt;Firebase Cloud Firestore&lt;/div&gt;&lt;div&gt;Consent-gated event logging&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="200" x="490" y="700" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
