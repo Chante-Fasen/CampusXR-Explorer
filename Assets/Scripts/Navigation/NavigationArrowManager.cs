@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit.UI;
 
@@ -100,8 +99,12 @@ public class NavigationArrowManager : MonoBehaviour
         // Centre the arrows on the active site's sphere (where the photo is
         // taken from) at a height just below the player's eyes.
         Transform siteTransform = GetSiteTransform(location.id);
+        // With TourCentreFollower the site sphere sits at the player's eyes,
+        // so measure from the sphere (arrows then move with the photo).
+        // Without it, fall back to the camera's height.
+        bool sphereFollowsPlayer = siteTransform != null && FindAnyObjectByType<TourCentreFollower>() != null;
         Vector3 centre = siteTransform != null ? siteTransform.position : cam.transform.position;
-        centre.y = cam.transform.position.y - heightBelowEyes;
+        centre.y = (sphereFollowsPlayer ? siteTransform.position.y : cam.transform.position.y) - heightBelowEyes;
 
         float siteYaw = siteTransform != null ? siteTransform.eulerAngles.y : 0f;
 
@@ -159,28 +162,7 @@ public class NavigationArrowManager : MonoBehaviour
 
     public void Navigate(LinkData link)
     {
-        string targetId = link.target_id;
-
-        // Target site is in this scene - just switch the photo (instant).
-        if (GetSiteTransform(targetId) != null)
-        {
-            siteArrivalHandler.ActivateSite(targetId);
-            return;
-        }
-
-        // Target site is in another scene - load that scene and land on it.
-        LocationData target = SceneDataLoader.FindLocationById(targetId);
-        bool otherScene = target != null
-                          && !string.IsNullOrEmpty(target.scene_name)
-                          && target.scene_name != SceneManager.GetActiveScene().name;
-
-        if (otherScene && SceneTransitionManager.Instance != null)
-        {
-            SceneTransitionManager.Instance.GoToSite(target.scene_name, targetId);
-            return;
-        }
-
-        Debug.LogWarning($"NavigationArrowManager: can't navigate to '{targetId}' - it isn't in this scene's SiteArrivalHandler list or in campus_data.json with a scene_name.");
+        SiteNavigator.GoTo(link.target_id);
     }
 
     // ---------------------------------------------------------------------

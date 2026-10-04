@@ -47,6 +47,18 @@ public class SiteArrivalHandler : MonoBehaviour
     }
 
     /// <summary>
+    /// True if this scene has a site with that id.
+    /// </summary>
+    public bool HasSite(string siteId)
+    {
+        foreach (SiteEntry entry in sites)
+        {
+            if (entry.siteId == siteId && entry.siteObject != null) return true;
+        }
+        return false;
+    }
+
+    /// <summary>
     /// Activates the site whose siteId matches, deactivates every other
     /// site in the list. Also callable directly (e.g. from in-scene
     /// navigation buttons that don't need a scene change).

@@ -28,13 +28,24 @@ public class LocationData
     public List<LinkData> links = new List<LinkData>(); // navigation arrows to other sites
 }
 
+// A clickable "i" marker placed at a spot in the 360 photo (e.g. in front of
+// a classroom door). Clicking it opens a popup with, from top to bottom:
+// title, image, description, and optionally an "Enter" button.
 [Serializable]
 public class HotspotData
 {
     public string id;
-    public Vector3Data world_position;
+    public Vector3Data world_position; // metres from the centre of the photo sphere (= player's eyes): x right/left, y up/down from eye level, z forward/back
+
+    public string title;           // heading at the top of the popup, e.g. "Alpha Classroom"
+    public string image;           // image file name without extension, from Assets/Images/Hotspot Popup Images, e.g. "alpha-classroom"
+    public string description;     // text under the image
+    public string target_id;       // optional: id of the site the "Enter" button goes to, e.g. "AlphaSite". Leave empty for no button
+    public string button_label;    // optional: text on that button (default "Enter")
+
+    // Original fields - still supported:
     public string overlay_type;    // "text" / "image" / "audio" / "video"
-    public string content;
+    public string content;         // text, image name or audio path, depending on overlay_type
 }
 
 // A navigation arrow shown at a location that takes the player to another

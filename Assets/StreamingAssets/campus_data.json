@@ -8,14 +8,28 @@
       "thumbnail_asset": "",
       "hotspots": [
         {
-          "id": "rec_desk",
+          "id": "reception_info",
           "world_position": {
-            "x": 0,
-            "y": 0,
-            "z": 3
+            "x": -5.33,
+            "y": -0.19,
+            "z": -1
           },
-          "overlay_type": "text",
-          "content": "Reception desk"
+          "title": "Reception",
+          "image": "inside-entrance-reception",
+          "description": "Placeholder - Steven to replace with real info about Reception."
+        },
+        {
+          "id": "alpha_door",
+          "world_position": {
+            "x": -1.25,
+            "y": -0.5,
+            "z": -3
+          },
+          "title": "Alpha Classroom",
+          "image": "alpha-classroom",
+          "description": "Placeholder - Steven to replace with real info about the Alpha classroom.",
+          "target_id": "AlphaSite",
+          "button_label": "Enter Alpha"
         }
       ],
       "links": [
@@ -40,12 +54,13 @@
         {
           "id": "alpha_info",
           "world_position": {
-            "x": 0,
-            "y": 0,
+            "x": 1,
+            "y": 1,
             "z": 3
           },
-          "overlay_type": "text",
-          "content": "Alpha lecture room"
+          "title": "Alpha Classroom",
+          "image": "alpha-classroom",
+          "description": "Placeholder - Steven to replace with real info about the Alpha classroom."
         }
       ],
       "links": [
@@ -69,8 +84,9 @@
             "y": 0,
             "z": 3
           },
-          "overlay_type": "text",
-          "content": "Gamma lecture room"
+          "title": "Gamma Classroom",
+          "image": "gamma-classroom",
+          "description": "Placeholder - Steven to replace with real info about the Gamma classroom."
         }
       ],
       "links": [
