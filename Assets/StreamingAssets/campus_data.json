@@ -2,16 +2,82 @@
   "campus": "Kempton Park",
   "locations": [
     {
-      "id": "computer_lab",
-      "scene_name": "ComputerLabScene",
-      "label": "Computer Lab",
-      "thumbnail_asset": "thumbnails/computer_lab.jpg",
+      "id": "ReceptionSite",
+      "scene_name": "Tour360",
+      "label": "Reception",
+      "thumbnail_asset": "",
       "hotspots": [
         {
-          "id": "hs_001",
-          "world_position": { "x": 1.2, "y": 0.0, "z": -0.5 },
+          "id": "rec_desk",
+          "world_position": {
+            "x": 0,
+            "y": 0,
+            "z": 3
+          },
           "overlay_type": "text",
-          "content": "This lab has 50 PCs available for student use."
+          "content": "Reception desk"
+        }
+      ],
+      "links": [
+        {
+          "target_id": "AlphaSite",
+          "yaw": 90,
+          "label": "To Alpha"
+        },
+        {
+          "target_id": "GammaSite",
+          "yaw": 270,
+          "label": "To Gamma"
+        }
+      ]
+    },
+    {
+      "id": "AlphaSite",
+      "scene_name": "Tour360",
+      "label": "Alpha",
+      "thumbnail_asset": "",
+      "hotspots": [
+        {
+          "id": "alpha_info",
+          "world_position": {
+            "x": 0,
+            "y": 0,
+            "z": 3
+          },
+          "overlay_type": "text",
+          "content": "Alpha lecture room"
+        }
+      ],
+      "links": [
+        {
+          "target_id": "ReceptionSite",
+          "yaw": 180,
+          "label": "Back to Reception"
+        }
+      ]
+    },
+    {
+      "id": "GammaSite",
+      "scene_name": "Tour360",
+      "label": "Gamma",
+      "thumbnail_asset": "",
+      "hotspots": [
+        {
+          "id": "gamma_info",
+          "world_position": {
+            "x": 0,
+            "y": 0,
+            "z": 3
+          },
+          "overlay_type": "text",
+          "content": "Gamma lecture room"
+        }
+      ],
+      "links": [
+        {
+          "target_id": "ReceptionSite",
+          "yaw": 0,
+          "label": "Back to Reception"
         }
       ]
     }
