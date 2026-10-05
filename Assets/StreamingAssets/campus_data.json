@@ -5,18 +5,18 @@
       "id": "ReceptionSite",
       "scene_name": "Tour360",
       "label": "Reception",
-      "thumbnail_asset": "",
+      "thumbnail_asset": "inside-entrance-reception",
       "hotspots": [
         {
           "id": "reception_info",
           "world_position": {
-            "x": -5.33,
+            "x": -4.33,
             "y": -0.19,
-            "z": -1
+            "z": -0.81
           },
           "title": "Reception",
           "image": "inside-entrance-reception",
-          "description": "Placeholder - Steven to replace with real info about Reception."
+          "description": "The reception area is one of the first points of contact for visitors entering the campus. It provides a welcoming space where students and visitors can receive assistance and information."
         },
         {
           "id": "alpha_door",
@@ -27,7 +27,7 @@
           },
           "title": "Alpha Classroom",
           "image": "alpha-classroom",
-          "description": "Placeholder - Steven to replace with real info about the Alpha classroom.",
+          "description": "Alpha Classroom is an academic learning space used for lectures, class activities and student engagement.",
           "target_id": "AlphaSite",
           "button_label": "Enter Alpha"
         }
@@ -49,7 +49,7 @@
       "id": "AlphaSite",
       "scene_name": "Tour360",
       "label": "Alpha",
-      "thumbnail_asset": "",
+      "thumbnail_asset": "alpha-classroom",
       "hotspots": [
         {
           "id": "alpha_info",
@@ -60,7 +60,7 @@
           },
           "title": "Alpha Classroom",
           "image": "alpha-classroom",
-          "description": "Placeholder - Steven to replace with real info about the Alpha classroom."
+          "description": "Alpha Classroom is an academic learning space used for lectures, class activities and student engagement."
         }
       ],
       "links": [
@@ -75,7 +75,7 @@
       "id": "GammaSite",
       "scene_name": "Tour360",
       "label": "Gamma",
-      "thumbnail_asset": "",
+      "thumbnail_asset": "gamma-classroom",
       "hotspots": [
         {
           "id": "gamma_info",
@@ -86,7 +86,7 @@
           },
           "title": "Gamma Classroom",
           "image": "gamma-classroom",
-          "description": "Placeholder - Steven to replace with real info about the Gamma classroom."
+          "description": "Gamma Classroom provides students with a dedicated environment for lectures, discussions and other academic activities."
         }
       ],
       "links": [
@@ -95,6 +95,170 @@
           "yaw": 0,
           "label": "Back to Reception"
         }
+      ]
+    },
+    {
+      "id": "EntranceSite",
+      "scene_name": "Tour360",
+      "label": "Outside Main Entrance",
+      "thumbnail_asset": "outside-main-entrance",
+      "hotspots": [
+        {
+          "id": "entrance_info",
+          "world_position": {
+            "x": 0,
+            "y": 0,
+            "z": 3
+          },
+          "title": "Outside Main Entrance",
+          "image": "outside-main-entrance",
+          "description": "Welcome to Belgium Campus iTversity Kempton Park. The main entrance provides visitors and prospective students with their first view of the campus and serves as the starting point of the immersive campus tour."
+        }
+      ],
+      "links": []
+    },
+    {
+      "id": "DeltaSite",
+      "scene_name": "Tour360",
+      "label": "Delta",
+      "thumbnail_asset": "delta-classroom",
+      "hotspots": [
+        {
+          "id": "delta_info",
+          "world_position": {
+            "x": 0,
+            "y": 0,
+            "z": 3
+          },
+          "title": "Delta Classroom",
+          "image": "delta-classroom",
+          "description": "Delta Classroom is one of the teaching spaces on the Kempton Park campus and is used for lectures and classroom-based academic activities."
+        }
+      ],
+      "links": []
+    },
+    {
+      "id": "OmegaSite",
+      "scene_name": "Tour360",
+      "label": "Omega",
+      "thumbnail_asset": "omega-classroom",
+      "hotspots": [
+        {
+          "id": "omega_info",
+          "world_position": {
+            "x": 0,
+            "y": 0,
+            "z": 3
+          },
+          "title": "Omega Classroom",
+          "image": "omega-classroom",
+          "description": "Omega Classroom is an academic teaching area where students can attend lectures and participate in classroom activities."
+        }
+      ],
+      "links": []
+    },
+    {
+      "id": "AuditoriumSite",
+      "scene_name": "Tour360",
+      "label": "Auditorium",
+      "thumbnail_asset": "lecture-room-auditorium",
+      "hotspots": [
+        {
+          "id": "auditorium_info",
+          "world_position": {
+            "x": 0,
+            "y": 0,
+            "z": 3
+          },
+          "title": "Lecture Room / Auditorium",
+          "image": "lecture-room-auditorium",
+          "description": "The auditorium is a larger learning and presentation space used for lectures, presentations and other campus activities."
+        }
+      ],
+      "links": []
+    },
+    {
+      "id": "LibrarySite",
+      "scene_name": "Tour360",
+      "label": "Library & Study Room",
+      "thumbnail_asset": "library-study-room",
+      "hotspots": [
+        {
+          "id": "library_info",
+          "world_position": {
+            "x": 0,
+            "y": 0,
+            "z": 3
+          },
+          "title": "Library & Study Room",
+          "image": "library-study-room",
+          "description": "The library and study area provide students with a quieter environment for studying, completing academic work and preparing for assessments."
+        }
+      ],
+      "links": []
+    },
+    {
+      "id": "CafeteriaSite",
+      "scene_name": "Tour360",
+      "label": "Cafeteria",
+      "thumbnail_asset": "cafeteria",
+      "hotspots": [
+        {
+          "id": "cafeteria_info",
+          "world_position": {
+            "x": 0,
+            "y": 0,
+            "z": 3
+          },
+          "title": "Cafeteria",
+          "image": "cafeteria",
+          "description": "The cafeteria provides students with a place to take breaks, eat and socialize between academic activities."
+        }
+      ],
+      "links": []
+    },
+    {
+      "id": "TuckshopSite",
+      "scene_name": "Tour360",
+      "label": "Cafeteria Tuckshop",
+      "thumbnail_asset": "cafeteria-tuckshop",
+      "hotspots": [
+        {
+          "id": "tuckshop_info",
+          "world_position": {
+            "x": 0,
+            "y": 0,
+            "z": 3
+          },
+          "title": "Cafeteria Tuckshop",
+          "image": "cafeteria-tuckshop",
+          "description": "The tuckshop forms part of the cafeteria area and provides a convenient facility for students during breaks and throughout the campus day."
+        }
+      ],
+      "links": []
+    },
+    {
+      "id": "ParkingSite",
+      "scene_name": "Tour360",
+      "label": "Campus Parking Area",
+      "thumbnail_asset": "campus-parking-area",
+      "hotspots": [
+        {
+          "id": "parking_info",
+          "world_position": {
+            "x": 0,
+            "y": 0,
+            "z": 3
+          },
+          "title": "Campus Parking Area",
+          "image": "campus-parking-area",
+          "description": "The campus parking area provides designated parking for students, staff and visitors and provides access to the main campus area."
+        }
+      ],
+      "links": []
+    }
+  ]
+}
       ]
     }
   ]
