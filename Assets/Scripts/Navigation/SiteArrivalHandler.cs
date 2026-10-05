@@ -47,6 +47,18 @@ public class SiteArrivalHandler : MonoBehaviour
     }
 
     /// <summary>
+    /// True if this scene has a site with that id.
+    /// </summary>
+    public bool HasSite(string siteId)
+    {
+        foreach (SiteEntry entry in sites)
+        {
+            if (entry.siteId == siteId && entry.siteObject != null) return true;
+        }
+        return false;
+    }
+
+    /// <summary>
     /// Activates the site whose siteId matches, deactivates every other
     /// site in the list. Also callable directly (e.g. from in-scene
     /// navigation buttons that don't need a scene change).
@@ -68,6 +80,13 @@ public class SiteArrivalHandler : MonoBehaviour
         if (!found && !string.IsNullOrEmpty(siteId))
         {
             Debug.LogWarning($"Site id '{siteId}' not found in this scene's site list.");
+        }
+
+        if (found)
+        {
+            // Tell the data side which location we're now at, so hotspots and
+            // navigation arrows for this site (from campus_data.json) can show.
+            SceneDataLoader.SetCurrentSite(siteId);
         }
     }
 }

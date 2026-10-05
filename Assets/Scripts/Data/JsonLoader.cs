@@ -1,42 +1,91 @@
-using System.IO;
+using System;
 using System.Collections;
+using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
 
-// Reads campus_data.json from StreamingAssets and loads it into
-// memory on app startup. Uses UnityWebRequest instead of File.ReadAllText
-// because on Android/Quest, StreamingAssets files are compressed inside
-// the APK and cannot be read with normal file system calls.
+// Reads campus_data.json from StreamingAssets once and keeps it in memory
+// for the whole session (JsonLoader.LoadedData).
+//
+// Uses UnityWebRequest instead of File.ReadAllText because on Android/Quest
+// StreamingAssets is packed inside the APK and can't be read with normal
+// file calls.
+//
+// This creates itself automatically before the first scene loads, so it
+// does NOT need to be placed in any scene, and it works no matter which
+// scene you press Play from in the Editor. If a JsonLoader component is
+// also placed in a scene, that extra copy simply removes itself.
+//
+// Other scripts can either check JsonLoader.LoadedData != null, or
+// subscribe to JsonLoader.DataLoaded to be told when it's ready.
 
 public class JsonLoader : MonoBehaviour
 {
-    public static CampusData LoadedData;
+    public static CampusData LoadedData { get; private set; }
 
-    void Awake()
+    // Fired once, when campus_data.json has been loaded successfully.
+    public static event Action DataLoaded;
+
+    private static JsonLoader instance;
+
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    private static void CreateAutomatically()
     {
-        StartCoroutine(LoadJsonData());
+        if (instance != null) return;
+
+        GameObject loaderObject = new GameObject("[JsonLoader]");
+        loaderObject.AddComponent<JsonLoader>();
     }
 
-    IEnumerator LoadJsonData()
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            // Only remove this component, not the whole GameObject, in case
+            // it was added to an object that holds other scripts too.
+            Destroy(this);
+            return;
+        }
+
+        instance = this;
+        DontDestroyOnLoad(gameObject);
+
+        if (LoadedData == null)
+        {
+            StartCoroutine(LoadJsonData());
+        }
+    }
+
+    private IEnumerator LoadJsonData()
     {
         string filePath = Path.Combine(Application.streamingAssetsPath, "campus_data.json");
 
-        // On Android, paths need "jar:file://" handling, which
-        // UnityWebRequest manages automatically. On Windows/Mac/Editor,
-        // UnityWebRequest also works fine with normal file paths.
-        UnityWebRequest request = UnityWebRequest.Get(filePath);
-        yield return request.SendWebRequest();
+        // Android already gives a "jar:file://..." URL. On Windows/Mac/Editor
+        // it's a plain path, so turn it into a proper file:/// URL.
+        string url = filePath.Contains("://") ? filePath : new Uri(filePath).AbsoluteUri;
 
-        if (request.result == UnityWebRequest.Result.Success)
+        using (UnityWebRequest request = UnityWebRequest.Get(url))
         {
-            string jsonText = request.downloadHandler.text;
-            LoadedData = JsonUtility.FromJson<CampusData>(jsonText);
+            yield return request.SendWebRequest();
 
-            Debug.Log("campus_data.json loaded successfully. Campus: " + LoadedData.campus);
-        }
-        else
-        {
-            Debug.LogError("Failed to load campus_data.json: " + request.error);
+            if (request.result != UnityWebRequest.Result.Success)
+            {
+                Debug.LogError("Failed to load campus_data.json: " + request.error);
+                yield break;
+            }
+
+            CampusData data = JsonUtility.FromJson<CampusData>(request.downloadHandler.text);
+
+            if (data == null || data.locations == null)
+            {
+                Debug.LogError("campus_data.json loaded but could not be read - check it matches CampusData.cs.");
+                yield break;
+            }
+
+            LoadedData = data;
+            Debug.Log($"campus_data.json loaded successfully. Campus: {data.campus} ({data.locations.Count} locations)");
+
+            DataLoaded?.Invoke();
         }
     }
 }
