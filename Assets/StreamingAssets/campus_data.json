@@ -2,100 +2,292 @@
   "campus": "Kempton Park",
   "locations": [
     {
-      "id": "ReceptionSite",
+      "id": "ReceptionArea",
       "scene_name": "Tour360",
-      "label": "Reception",
-      "thumbnail_asset": "",
-      "hotspots": [
-        {
-          "id": "reception_info",
-          "world_position": {
-            "x": -5.33,
-            "y": -0.19,
-            "z": -1
-          },
-          "title": "Reception",
-          "image": "inside-entrance-reception",
-          "description": "Placeholder - Steven to replace with real info about Reception."
-        },
-        {
-          "id": "alpha_door",
-          "world_position": {
-            "x": -1.25,
-            "y": -0.5,
-            "z": -3
-          },
-          "title": "Alpha Classroom",
-          "image": "alpha-classroom",
-          "description": "Placeholder - Steven to replace with real info about the Alpha classroom.",
-          "target_id": "AlphaSite",
-          "button_label": "Enter Alpha"
-        }
-      ],
-      "links": [
-        {
-          "target_id": "AlphaSite",
-          "yaw": 90,
-          "label": "To Alpha"
-        },
-        {
-          "target_id": "GammaSite",
-          "yaw": 270,
-          "label": "To Gamma"
-        }
-      ]
+      "label": "Reception Area",
+      "thumbnail_asset": "inside-entrance-reception",
+      "hotspots": [],
+      "links": []
     },
     {
-      "id": "AlphaSite",
+      "id": "AlphaEntrance",
       "scene_name": "Tour360",
-      "label": "Alpha",
-      "thumbnail_asset": "",
-      "hotspots": [
-        {
-          "id": "alpha_info",
-          "world_position": {
-            "x": 1,
-            "y": 1,
-            "z": 3
-          },
-          "title": "Alpha Classroom",
-          "image": "alpha-classroom",
-          "description": "Placeholder - Steven to replace with real info about the Alpha classroom."
-        }
-      ],
-      "links": [
-        {
-          "target_id": "ReceptionSite",
-          "yaw": 180,
-          "label": "Back to Reception"
-        }
-      ]
+      "label": "Alpha Entrance",
+      "thumbnail_asset": "alpha-classroom",
+      "hotspots": [],
+      "links": []
     },
     {
-      "id": "GammaSite",
+      "id": "AlphaFront",
       "scene_name": "Tour360",
-      "label": "Gamma",
+      "label": "Alpha Front",
+      "thumbnail_asset": "alpha-classroom",
+      "hotspots": [],
+      "links": []
+    },
+    {
+      "id": "AlphaMiddle",
+      "scene_name": "Tour360",
+      "label": "Alpha Middle",
+      "thumbnail_asset": "alpha-classroom",
+      "hotspots": [],
+      "links": []
+    },
+    {
+      "id": "AlphaSide",
+      "scene_name": "Tour360",
+      "label": "Alpha Side",
+      "thumbnail_asset": "alpha-classroom",
+      "hotspots": [],
+      "links": []
+    },
+    {
+      "id": "Cafeteria1",
+      "scene_name": "Tour360",
+      "label": "Cafeteria 1",
+      "thumbnail_asset": "cafeteria",
+      "hotspots": [],
+      "links": []
+    },
+    {
+      "id": "Cafeteria2",
+      "scene_name": "Tour360",
+      "label": "Cafeteria 2",
+      "thumbnail_asset": "cafeteria",
+      "hotspots": [],
+      "links": []
+    },
+    {
+      "id": "Cafeteria3",
+      "scene_name": "Tour360",
+      "label": "Cafeteria 3",
+      "thumbnail_asset": "cafeteria",
+      "hotspots": [],
+      "links": []
+    },
+    {
+      "id": "Cafeteria4",
+      "scene_name": "Tour360",
+      "label": "Cafeteria 4",
+      "thumbnail_asset": "cafeteria",
+      "hotspots": [],
+      "links": []
+    },
+    {
+      "id": "Cafeteria5",
+      "scene_name": "Tour360",
+      "label": "Cafeteria 5",
+      "thumbnail_asset": "cafeteria",
+      "hotspots": [],
+      "links": []
+    },
+    {
+      "id": "Cafeteria6",
+      "scene_name": "Tour360",
+      "label": "Cafeteria 6",
+      "thumbnail_asset": "cafeteria",
+      "hotspots": [],
+      "links": []
+    },
+    {
+      "id": "CafeteriaEntrance",
+      "scene_name": "Tour360",
+      "label": "Cafeteria Entrance",
+      "thumbnail_asset": "cafeteria",
+      "hotspots": [],
+      "links": []
+    },
+    {
+      "id": "CampusEntrance",
+      "scene_name": "Tour360",
+      "label": "Campus Entrance",
+      "thumbnail_asset": "outside-main-entrance",
+      "hotspots": [],
+      "links": []
+    },
+    {
+      "id": "Courtyard",
+      "scene_name": "Tour360",
+      "label": "Courtyard",
       "thumbnail_asset": "",
-      "hotspots": [
-        {
-          "id": "gamma_info",
-          "world_position": {
-            "x": 0,
-            "y": 0,
-            "z": 3
-          },
-          "title": "Gamma Classroom",
-          "image": "gamma-classroom",
-          "description": "Placeholder - Steven to replace with real info about the Gamma classroom."
-        }
-      ],
-      "links": [
-        {
-          "target_id": "ReceptionSite",
-          "yaw": 0,
-          "label": "Back to Reception"
-        }
-      ]
+      "hotspots": [],
+      "links": []
+    },
+    {
+      "id": "DeltaEntrance",
+      "scene_name": "Tour360",
+      "label": "Delta Entrance",
+      "thumbnail_asset": "delta-classroom",
+      "hotspots": [],
+      "links": []
+    },
+    {
+      "id": "DeltaFront",
+      "scene_name": "Tour360",
+      "label": "Delta Front",
+      "thumbnail_asset": "delta-classroom",
+      "hotspots": [],
+      "links": []
+    },
+    {
+      "id": "DeltaMiddle",
+      "scene_name": "Tour360",
+      "label": "Delta Middle",
+      "thumbnail_asset": "delta-classroom",
+      "hotspots": [],
+      "links": []
+    },
+    {
+      "id": "DeltaSide",
+      "scene_name": "Tour360",
+      "label": "Delta Side",
+      "thumbnail_asset": "delta-classroom",
+      "hotspots": [],
+      "links": []
+    },
+    {
+      "id": "EpsilonAudience",
+      "scene_name": "Tour360",
+      "label": "Epsilon Audience",
+      "thumbnail_asset": "lecture-room-auditorium",
+      "hotspots": [],
+      "links": []
+    },
+    {
+      "id": "EpsilonEntrance",
+      "scene_name": "Tour360",
+      "label": "Epsilon Entrance",
+      "thumbnail_asset": "lecture-room-auditorium",
+      "hotspots": [],
+      "links": []
+    },
+    {
+      "id": "EpsilonFront",
+      "scene_name": "Tour360",
+      "label": "Epsilon Front",
+      "thumbnail_asset": "lecture-room-auditorium",
+      "hotspots": [],
+      "links": []
+    },
+    {
+      "id": "GammaEntrance",
+      "scene_name": "Tour360",
+      "label": "Gamma Entrance",
+      "thumbnail_asset": "gamma-classroom",
+      "hotspots": [],
+      "links": []
+    },
+    {
+      "id": "GammaFront",
+      "scene_name": "Tour360",
+      "label": "Gamma Front",
+      "thumbnail_asset": "gamma-classroom",
+      "hotspots": [],
+      "links": []
+    },
+    {
+      "id": "GammaMiddle",
+      "scene_name": "Tour360",
+      "label": "Gamma Middle",
+      "thumbnail_asset": "gamma-classroom",
+      "hotspots": [],
+      "links": []
+    },
+    {
+      "id": "GammaSide",
+      "scene_name": "Tour360",
+      "label": "Gamma Side",
+      "thumbnail_asset": "gamma-classroom",
+      "hotspots": [],
+      "links": []
+    },
+    {
+      "id": "Hallway1",
+      "scene_name": "Tour360",
+      "label": "Hallway 1",
+      "thumbnail_asset": "",
+      "hotspots": [],
+      "links": []
+    },
+    {
+      "id": "Hallway2",
+      "scene_name": "Tour360",
+      "label": "Hallway 2",
+      "thumbnail_asset": "",
+      "hotspots": [],
+      "links": []
+    },
+    {
+      "id": "Hallway3",
+      "scene_name": "Tour360",
+      "label": "Hallway 3",
+      "thumbnail_asset": "",
+      "hotspots": [],
+      "links": []
+    },
+    {
+      "id": "LibraryEntrance",
+      "scene_name": "Tour360",
+      "label": "Library Entrance",
+      "thumbnail_asset": "library-study-room",
+      "hotspots": [],
+      "links": []
+    },
+    {
+      "id": "LibraryMiddle",
+      "scene_name": "Tour360",
+      "label": "Library Middle",
+      "thumbnail_asset": "library-study-room",
+      "hotspots": [],
+      "links": []
+    },
+    {
+      "id": "OmegaEntrance",
+      "scene_name": "Tour360",
+      "label": "Omega Entrance",
+      "thumbnail_asset": "omega-classroom",
+      "hotspots": [],
+      "links": []
+    },
+    {
+      "id": "OmegaFront",
+      "scene_name": "Tour360",
+      "label": "Omega Front",
+      "thumbnail_asset": "omega-classroom",
+      "hotspots": [],
+      "links": []
+    },
+    {
+      "id": "OmegaMiddle",
+      "scene_name": "Tour360",
+      "label": "Omega Middle",
+      "thumbnail_asset": "omega-classroom",
+      "hotspots": [],
+      "links": []
+    },
+    {
+      "id": "OmegaSide",
+      "scene_name": "Tour360",
+      "label": "Omega Side",
+      "thumbnail_asset": "omega-classroom",
+      "hotspots": [],
+      "links": []
+    },
+    {
+      "id": "OutsideEntrance",
+      "scene_name": "Tour360",
+      "label": "Outside Entrance",
+      "thumbnail_asset": "outside-main-entrance",
+      "hotspots": [],
+      "links": []
+    },
+    {
+      "id": "ParkingLot",
+      "scene_name": "Tour360",
+      "label": "Parking Lot",
+      "thumbnail_asset": "campus-parking-area",
+      "hotspots": [],
+      "links": []
     }
   ]
 }
