@@ -137,7 +137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &150764388
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -249,7 +249,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &152287960
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -361,7 +361,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &198959181
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -473,7 +473,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &255989802
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -585,7 +585,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &331323162
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -697,7 +697,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &378502016
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -809,7 +809,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &402280990
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -921,7 +921,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &514451377
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1151,7 +1151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 919883821}
+  m_Material: {fileID: 1358450360}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -1226,7 +1226,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &576601715
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1475,7 +1475,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &687513105
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1587,7 +1587,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &725188077
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1699,7 +1699,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &730497165
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1811,7 +1811,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &783902431
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1923,7 +1923,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &802606728
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2035,7 +2035,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &807692796
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2147,7 +2147,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &827454300
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2259,7 +2259,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &833411825
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2371,7 +2371,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &834604646
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2465,46 +2465,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &919883821
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: UI/RoundedCorners/RoundedCorners
-  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _ColorMask: 15
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _WidthHeightRadius: {r: 59.52462, g: 58.750214, b: 50.6, a: 0}
-  m_BuildTextureStacks: []
-  m_AllowLocking: 1
 --- !u!1 &1036365021
 GameObject:
   m_ObjectHideFlags: 0
@@ -2661,7 +2621,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &1079402825
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2773,7 +2733,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &1194509876
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2885,7 +2845,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &1331691661
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2997,7 +2957,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &1339367022
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3091,6 +3051,46 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!21 &1358450360
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI/RoundedCorners/RoundedCorners
+  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _WidthHeightRadius: {r: 59.52462, g: 58.750214, b: 50.6, a: 0}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
 --- !u!1 &1413928333
 GameObject:
   m_ObjectHideFlags: 0
@@ -3109,7 +3109,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &1413928334
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3236,12 +3236,78 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SiteArrivalHandler
   sites:
-  - siteId: ReceptionSite
+  - siteId: ReceptionArea
+    siteObject: {fileID: 834604645}
+  - siteId: AlphaEntrance
+    siteObject: {fileID: 1728450976}
+  - siteId: AlphaFront
     siteObject: {fileID: 1861617131}
-  - siteId: GammaSite
-    siteObject: {fileID: 0}
-  - siteId: AlphaSite
-    siteObject: {fileID: 0}
+  - siteId: AlphaMiddle
+    siteObject: {fileID: 1962853749}
+  - siteId: AlphaSide
+    siteObject: {fileID: 331323161}
+  - siteId: Cafeteria1
+    siteObject: {fileID: 807692795}
+  - siteId: Cafeteria2
+    siteObject: {fileID: 1339367021}
+  - siteId: Cafeteria3
+    siteObject: {fileID: 198959180}
+  - siteId: Cafeteria4
+    siteObject: {fileID: 1478883476}
+  - siteId: Cafeteria5
+    siteObject: {fileID: 730497164}
+  - siteId: Cafeteria6
+    siteObject: {fileID: 1856331263}
+  - siteId: CafeteriaEntrance
+    siteObject: {fileID: 1194509875}
+  - siteId: CampusEntrance
+    siteObject: {fileID: 833411824}
+  - siteId: Courtyard
+    siteObject: {fileID: 576601714}
+  - siteId: DeltaEntrance
+    siteObject: {fileID: 1079402824}
+  - siteId: DeltaFront
+    siteObject: {fileID: 402280989}
+  - siteId: DeltaMiddle
+    siteObject: {fileID: 1471377542}
+  - siteId: DeltaSide
+    siteObject: {fileID: 1413928333}
+  - siteId: EpsilonAudience
+    siteObject: {fileID: 2063372644}
+  - siteId: EpsilonEntrance
+    siteObject: {fileID: 1506222057}
+  - siteId: EpsilonFront
+    siteObject: {fileID: 725188076}
+  - siteId: GammaEntrance
+    siteObject: {fileID: 1740761646}
+  - siteId: GammaFront
+    siteObject: {fileID: 1930441625}
+  - siteId: GammaMiddle
+    siteObject: {fileID: 1650454517}
+  - siteId: GammaSide
+    siteObject: {fileID: 514451376}
+  - siteId: Hallway1
+    siteObject: {fileID: 2122826188}
+  - siteId: Hallway2
+    siteObject: {fileID: 1740413258}
+  - siteId: Hallway3
+    siteObject: {fileID: 783902430}
+  - siteId: LibraryEntrance
+    siteObject: {fileID: 152287959}
+  - siteId: LibraryMiddle
+    siteObject: {fileID: 378502015}
+  - siteId: OmegaEntrance
+    siteObject: {fileID: 687513104}
+  - siteId: OmegaFront
+    siteObject: {fileID: 150764387}
+  - siteId: OmegaMiddle
+    siteObject: {fileID: 827454299}
+  - siteId: OmegaSide
+    siteObject: {fileID: 255989801}
+  - siteId: OutsideEntrance
+    siteObject: {fileID: 1331691660}
+  - siteId: ParkingLot
+    siteObject: {fileID: 802606727}
   defaultToFirstSite: 1
 --- !u!4 &1462471890
 Transform:
@@ -3343,7 +3409,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &1471377543
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3455,7 +3521,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &1478883477
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3567,7 +3633,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &1506222058
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3674,12 +3740,12 @@ GameObject:
   - component: {fileID: 1650454519}
   - component: {fileID: 1650454518}
   m_Layer: 0
-  m_Name: Gamme Middle
+  m_Name: Gamma Middle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &1650454518
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3791,7 +3857,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &1728450977
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3903,7 +3969,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &1740413259
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4015,7 +4081,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &1740761647
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4127,7 +4193,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &1856331264
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4239,7 +4305,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &1861617132
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4351,7 +4417,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &1930441626
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4463,7 +4529,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &1962853750
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4575,7 +4641,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &2063372645
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4687,7 +4753,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &2122826189
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4787,7 +4853,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 537295404}
   - {fileID: 1462471890}
-  - {fileID: 1036365025}
   - {fileID: 1728450980}
   - {fileID: 1861617135}
   - {fileID: 1962853753}
@@ -4824,3 +4889,4 @@ SceneRoots:
   - {fileID: 150764391}
   - {fileID: 255989805}
   - {fileID: 827454303}
+  - {fileID: 1036365025}
