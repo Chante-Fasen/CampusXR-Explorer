@@ -6,7 +6,21 @@
       "scene_name": "Tour360",
       "label": "Reception Area",
       "thumbnail_asset": "inside-entrance-reception",
-      "hotspots": [],
+      "hotspots": [
+        {
+          "id": "alpha_door",
+          "world_position": {
+            "x": -3.03,
+            "y": 0,
+            "z": -1.75
+          },
+          "title": "Alpha Classroom",
+          "image": "alpha-classroom",
+          "description": "Alpha Classroom is an academic learning space used for lectures, class activities and student engagement.",
+          "target_id": "AlphaEntrance",
+          "button_label": "Enter Alpha"
+        }
+      ],
       "links": []
     },
     {
@@ -94,7 +108,21 @@
       "scene_name": "Tour360",
       "label": "Cafeteria Entrance",
       "thumbnail_asset": "cafeteria",
-      "hotspots": [],
+      "hotspots": [
+        {
+          "id": "library_door",
+          "world_position": {
+            "x": -3.41,
+            "y": 0,
+            "z": 0.79
+          },
+          "title": "Library & Study Room",
+          "image": "library-study-room",
+          "description": "The library and study area provide students with a quieter environment for studying, completing academic work and preparing for assessments.",
+          "target_id": "LibraryEntrance",
+          "button_label": "Enter Library"
+        }
+      ],
       "links": []
     },
     {
@@ -110,7 +138,19 @@
       "scene_name": "Tour360",
       "label": "Courtyard",
       "thumbnail_asset": "",
-      "hotspots": [],
+      "hotspots": [
+        {
+          "id": "tuckshop_info",
+          "world_position": {
+            "x": 3.42,
+            "y": 0,
+            "z": -0.73
+          },
+          "title": "Cafeteria Tuckshop",
+          "image": "cafeteria-tuckshop",
+          "description": "The tuckshop forms part of the cafeteria area and provides a convenient facility for students during breaks and throughout the campus day."
+        }
+      ],
       "links": []
     },
     {
@@ -214,7 +254,34 @@
       "scene_name": "Tour360",
       "label": "Hallway 2",
       "thumbnail_asset": "",
-      "hotspots": [],
+      "hotspots": [
+        {
+          "id": "gamma_door",
+          "world_position": {
+            "x": -3.29,
+            "y": 0,
+            "z": -1.2
+          },
+          "title": "Gamma Classroom",
+          "image": "gamma-classroom",
+          "description": "Gamma Classroom provides students with a dedicated environment for lectures, discussions and other academic activities.",
+          "target_id": "GammaEntrance",
+          "button_label": "Enter Gamma"
+        },
+        {
+          "id": "delta_door",
+          "world_position": {
+            "x": 2.76,
+            "y": 0,
+            "z": -2.15
+          },
+          "title": "Delta Classroom",
+          "image": "delta-classroom",
+          "description": "Delta Classroom is one of the teaching spaces on the Kempton Park campus and is used for lectures and classroom-based academic activities.",
+          "target_id": "DeltaEntrance",
+          "button_label": "Enter Delta"
+        }
+      ],
       "links": []
     },
     {
