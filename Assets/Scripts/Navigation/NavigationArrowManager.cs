@@ -19,9 +19,9 @@ using UnityEngine.XR.Interaction.Toolkit.UI;
 ///   - Every time the current site changes (SceneDataLoader.LocationChanged)
 ///     the old arrows are removed and one arrow is created per link.
 ///   - Each arrow is placed around the player using the link's "yaw":
-///     0 = straight ahead (the photo's forward direction), 90 = right,
-///     180 = behind, 270 = left. If a site sphere is rotated in Unity, its
-///     Y rotation is added so the arrows still line up with the photo.
+///     0 = Unity's forward (+Z, the shared direction all photos are turned to face), 90 = right,
+///     180 = behind, 270 = left - measured in the WORLD (Unity's +Z is 0),
+///     after the photo spheres have been rotated to face the same way.
 ///   - Clicking an arrow switches to the target site in this scene via
 ///     SiteArrivalHandler (no scene load). If the target site lives in a
 ///     different scene, it loads that scene via SceneTransitionManager.
@@ -106,13 +106,15 @@ public class NavigationArrowManager : MonoBehaviour
         Vector3 centre = siteTransform != null ? siteTransform.position : cam.transform.position;
         centre.y = (sphereFollowsPlayer ? siteTransform.position.y : cam.transform.position.y) - heightBelowEyes;
 
-        float siteYaw = siteTransform != null ? siteTransform.eulerAngles.y : 0f;
+        // yaw is measured in WORLD directions (the spheres are rotated so all
+        // photos face the same real-world way), so the sphere's own rotation
+        // is NOT added here.
 
         foreach (LinkData link in location.links)
         {
             if (link == null || string.IsNullOrEmpty(link.target_id)) continue;
 
-            Vector3 direction = Quaternion.Euler(0f, siteYaw + link.yaw, 0f) * Vector3.forward;
+            Vector3 direction = Quaternion.Euler(0f, link.yaw, 0f) * Vector3.forward;
             Vector3 position = centre + direction * distance;
 
             // Face away from the player, then lean back towards the floor so
