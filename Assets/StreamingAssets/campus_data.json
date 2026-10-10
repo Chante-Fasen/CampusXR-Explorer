@@ -11,12 +11,12 @@
           "id": "alpha_door",
           "world_position": {
             "x": -3.03,
-            "y": 0,
+            "y": 0.0,
             "z": -1.75
           },
           "title": "Alpha Classroom",
-          "image": "alpha-classroom",
           "description": "Alpha Classroom is an academic learning space used for lectures, class activities and student engagement.",
+          "image": "alpha-classroom",
           "target_id": "AlphaEntrance",
           "button_label": "Enter Alpha"
         }
@@ -60,7 +60,34 @@
       "scene_name": "Tour360",
       "label": "Cafeteria 1",
       "thumbnail_asset": "cafeteria",
-      "hotspots": [],
+      "hotspots": [
+        {
+          "id": "library_door",
+          "world_position": {
+            "x": -3.27,
+            "y": 0.0,
+            "z": -1.25
+          },
+          "title": "Library & Study Room",
+          "description": "The library and study area provide students with a quieter environment for studying, completing academic work and preparing for assessments.",
+          "image": "library-study-room",
+          "target_id": "LibraryEntrance",
+          "button_label": "Enter Library"
+        },
+        {
+          "id": "omega_door",
+          "world_position": {
+            "x": -3.09,
+            "y": 0.0,
+            "z": 1.64
+          },
+          "title": "Omega Classroom",
+          "description": "Omega Classroom is an academic teaching area where students can attend lectures and participate in classroom activities.",
+          "image": "omega-classroom",
+          "target_id": "OmegaEntrance",
+          "button_label": "Enter Omega"
+        }
+      ],
       "links": []
     },
     {
@@ -84,7 +111,20 @@
       "scene_name": "Tour360",
       "label": "Cafeteria 4",
       "thumbnail_asset": "cafeteria",
-      "hotspots": [],
+      "hotspots": [
+        {
+          "id": "courtyard_door",
+          "world_position": {
+            "x": -2.39,
+            "y": 0.0,
+            "z": -2.56
+          },
+          "title": "Courtyard",
+          "description": "The courtyard is the open area beside the cafeteria where students can take a break between classes. The Tuckshop is also found here.",
+          "target_id": "Courtyard",
+          "button_label": "Go to Courtyard"
+        }
+      ],
       "links": []
     },
     {
@@ -92,7 +132,20 @@
       "scene_name": "Tour360",
       "label": "Cafeteria 5",
       "thumbnail_asset": "cafeteria",
-      "hotspots": [],
+      "hotspots": [
+        {
+          "id": "courtyard_door",
+          "world_position": {
+            "x": 2.87,
+            "y": 0.0,
+            "z": -2.01
+          },
+          "title": "Courtyard",
+          "description": "The courtyard is the open area beside the cafeteria where students can take a break between classes. The Tuckshop is also found here.",
+          "target_id": "Courtyard",
+          "button_label": "Go to Courtyard"
+        }
+      ],
       "links": []
     },
     {
@@ -110,15 +163,28 @@
       "thumbnail_asset": "cafeteria",
       "hotspots": [
         {
+          "id": "omega_door",
+          "world_position": {
+            "x": -2.11,
+            "y": 0.0,
+            "z": 2.8
+          },
+          "title": "Omega Classroom",
+          "description": "Omega Classroom is an academic teaching area where students can attend lectures and participate in classroom activities.",
+          "image": "omega-classroom",
+          "target_id": "OmegaEntrance",
+          "button_label": "Enter Omega"
+        },
+        {
           "id": "library_door",
           "world_position": {
             "x": -3.41,
-            "y": 0,
+            "y": 0.0,
             "z": 0.79
           },
           "title": "Library & Study Room",
-          "image": "library-study-room",
           "description": "The library and study area provide students with a quieter environment for studying, completing academic work and preparing for assessments.",
+          "image": "library-study-room",
           "target_id": "LibraryEntrance",
           "button_label": "Enter Library"
         }
@@ -143,12 +209,12 @@
           "id": "tuckshop_info",
           "world_position": {
             "x": 3.42,
-            "y": 0,
+            "y": 0.0,
             "z": -0.73
           },
           "title": "Cafeteria Tuckshop",
-          "image": "cafeteria-tuckshop",
-          "description": "The tuckshop forms part of the cafeteria area and provides a convenient facility for students during breaks and throughout the campus day."
+          "description": "The tuckshop forms part of the cafeteria area and provides a convenient facility for students during breaks and throughout the campus day.",
+          "image": "cafeteria-tuckshop"
         }
       ],
       "links": []
@@ -246,7 +312,34 @@
       "scene_name": "Tour360",
       "label": "Hallway 1",
       "thumbnail_asset": "",
-      "hotspots": [],
+      "hotspots": [
+        {
+          "id": "epsilon_door",
+          "world_position": {
+            "x": 3.49,
+            "y": 0.0,
+            "z": -0.24
+          },
+          "title": "Epsilon / Auditorium",
+          "description": "The auditorium is a larger learning and presentation space used for lectures, presentations and other campus activities.",
+          "image": "lecture-room-auditorium",
+          "target_id": "EpsilonEntrance",
+          "button_label": "Enter Epsilon"
+        },
+        {
+          "id": "gamma_door",
+          "world_position": {
+            "x": 2.87,
+            "y": 0.0,
+            "z": -2.01
+          },
+          "title": "Gamma Classroom",
+          "description": "Gamma Classroom provides students with a dedicated environment for lectures, discussions and other academic activities.",
+          "image": "gamma-classroom",
+          "target_id": "GammaEntrance",
+          "button_label": "Enter Gamma"
+        }
+      ],
       "links": []
     },
     {
@@ -256,15 +349,28 @@
       "thumbnail_asset": "",
       "hotspots": [
         {
+          "id": "epsilon_door",
+          "world_position": {
+            "x": -2.97,
+            "y": 0.0,
+            "z": 1.85
+          },
+          "title": "Epsilon / Auditorium",
+          "description": "The auditorium is a larger learning and presentation space used for lectures, presentations and other campus activities.",
+          "image": "lecture-room-auditorium",
+          "target_id": "EpsilonEntrance",
+          "button_label": "Enter Epsilon"
+        },
+        {
           "id": "gamma_door",
           "world_position": {
             "x": -3.29,
-            "y": 0,
+            "y": 0.0,
             "z": -1.2
           },
           "title": "Gamma Classroom",
-          "image": "gamma-classroom",
           "description": "Gamma Classroom provides students with a dedicated environment for lectures, discussions and other academic activities.",
+          "image": "gamma-classroom",
           "target_id": "GammaEntrance",
           "button_label": "Enter Gamma"
         },
@@ -272,12 +378,12 @@
           "id": "delta_door",
           "world_position": {
             "x": 2.76,
-            "y": 0,
+            "y": 0.0,
             "z": -2.15
           },
           "title": "Delta Classroom",
-          "image": "delta-classroom",
           "description": "Delta Classroom is one of the teaching spaces on the Kempton Park campus and is used for lectures and classroom-based academic activities.",
+          "image": "delta-classroom",
           "target_id": "DeltaEntrance",
           "button_label": "Enter Delta"
         }
