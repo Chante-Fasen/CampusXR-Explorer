@@ -7,10 +7,20 @@ using UnityEngine.SceneManagement;
 /// GameObject in your FIRST scene only (e.g. a "Bootstrap" or "Managers"
 /// object). It survives scene loads via DontDestroyOnLoad, so every other
 /// scene can read TargetSiteId from it once loading finishes.
+///
+/// Loading screen: when useLoadingScreen is on, GoToSite first shows the
+/// SplashScreen scene (small, opens instantly), which then loads the real
+/// scene in the background and fills its slider with the actual progress.
 /// </summary>
 public class SceneTransitionManager : MonoBehaviour
 {
     public static SceneTransitionManager Instance { get; private set; }
+
+    [Tooltip("Show the splash screen with a progress bar while the next scene loads.")]
+    public bool useLoadingScreen = true;
+
+    [Tooltip("Exact name of the scene used as the loading screen.")]
+    public string loadingSceneName = "SplashScreen";
 
     // The id of the site/hotspot to focus on once the new scene loads.
     // Leave empty if you're just loading a scene with no specific target.
@@ -37,7 +47,17 @@ public class SceneTransitionManager : MonoBehaviour
     public void GoToSite(string sceneName, string siteId)
     {
         TargetSiteId = siteId;
-        SceneManager.LoadScene(sceneName);
+
+        if (useLoadingScreen && !string.IsNullOrEmpty(loadingSceneName))
+        {
+            // The splash scene picks this up and loads sceneName with a progress bar.
+            SplashScreenLoader.PendingScene = sceneName;
+            SceneManager.LoadScene(loadingSceneName);
+        }
+        else
+        {
+            SceneManager.LoadScene(sceneName);
+        }
     }
 
     /// <summary>
