@@ -19,7 +19,7 @@ using UnityEngine.XR.Interaction.Toolkit.UI;
 ///   TourCentreFollower on Managers, that centre is the player's eyes:
 ///     x = right(+) / left(-)
 ///     y = up(+) / down(-) from eye level  (0 = eye level, about -1.6 = floor)
-///     z = forward(+) / behind(-)   (forward = the photo's forward direction)
+///     z = forward(+) / behind(-)   (forward = Unity's +Z, the shared direction all photos are turned to face)
 ///   Keep markers within about 4 m of the centre - the photo sphere has a
 ///   5 m radius, so anything further out would be hidden behind the photo.
 ///   Easiest way to get a position: in Tour360, turn on the site, put a
@@ -201,7 +201,9 @@ public class HotspotManager : MonoBehaviour
 
         Transform site = GetSiteTransform(location.id);
         Vector3 centre = site != null ? site.position : Vector3.zero;
-        Quaternion siteRotation = Quaternion.Euler(0f, site != null ? site.eulerAngles.y : 0f, 0f);
+        // world_position is measured in WORLD directions (the spheres are
+        // rotated so all photos face the same real-world way), so the
+        // sphere's own rotation is NOT applied here.
 
         foreach (HotspotData hotspot in location.hotspots)
         {
@@ -220,7 +222,7 @@ public class HotspotManager : MonoBehaviour
                 local = new Vector3(flat.x, local.y, flat.z);
             }
 
-            Vector3 position = centre + siteRotation * local;
+            Vector3 position = centre + local;
 
             GameObject markerObject = markerPrefab != null
                 ? Instantiate(markerPrefab, position, Quaternion.identity, transform)

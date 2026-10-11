@@ -1,4 +1,5 @@
 {
+    "mirror_fixed": true,
   "campus": "Kempton Park",
   "locations": [
     {
@@ -10,9 +11,11 @@
         {
           "id": "alpha_door",
           "world_position": {
-            "x": -3.03,
-            "y": 0.0,
-            "z": -1.75
+{
+  "x": -3.03,
+  "y": 0.0,
+  "z": -1.75
+}
           },
           "title": "Alpha Classroom",
           "description": "Alpha Classroom is an academic learning space used for lectures, class activities and student engagement.",
@@ -21,7 +24,23 @@
           "button_label": "Enter Alpha"
         }
       ],
-      "links": []
+      "links": [
+        {
+          "target_id": "Hallway1",
+          "yaw":20,
+          "label": ""
+        },
+        {
+          "target_id": "CampusEntrance",
+          "yaw": 250,
+          "label": ""
+        },
+        {
+          "target_id": "CafeteriaEntrance",
+          "yaw": 180,
+          "label": "Go Upstairs"
+        }
+      ]
     },
     {
       "id": "AlphaEntrance",
@@ -29,7 +48,23 @@
       "label": "Alpha Entrance",
       "thumbnail_asset": "alpha-classroom",
       "hotspots": [],
-      "links": []
+      "links": [
+        {
+          "target_id": "AlphaFront",
+          "yaw": 350,
+          "label": ""
+        },
+        {
+          "target_id": "AlphaSide",
+          "yaw": 270,
+          "label": ""
+        },
+        {
+          "target_id": "ReceptionArea",
+          "yaw": 140,
+          "label": "Leave Alpha"
+        }
+      ]
     },
     {
       "id": "AlphaFront",
@@ -37,7 +72,13 @@
       "label": "Alpha Front",
       "thumbnail_asset": "alpha-classroom",
       "hotspots": [],
-      "links": []
+      "links": [
+        {
+          "target_id": "AlphaEntrance",
+          "yaw": 185,
+          "label": ""
+        }
+      ]
     },
     {
       "id": "AlphaMiddle",
@@ -45,7 +86,13 @@
       "label": "Alpha Middle",
       "thumbnail_asset": "alpha-classroom",
       "hotspots": [],
-      "links": []
+      "links": [
+        {
+          "target_id": "AlphaSide",
+          "yaw": 180,
+          "label": ""
+        }
+      ]
     },
     {
       "id": "AlphaSide",
@@ -53,42 +100,69 @@
       "label": "Alpha Side",
       "thumbnail_asset": "alpha-classroom",
       "hotspots": [],
-      "links": []
+      "links": [
+        {
+          "target_id": "AlphaMiddle",
+          "yaw": 350,
+          "label": ""
+        },
+        {
+          "target_id": "AlphaEntrance",
+          "yaw": 75,
+          "label": ""
+        }
+      ]
     },
     {
       "id": "Cafeteria1",
       "scene_name": "Tour360",
       "label": "Cafeteria 1",
       "thumbnail_asset": "cafeteria",
-      "hotspots": [
-        {
-          "id": "library_door",
-          "world_position": {
-            "x": -3.27,
-            "y": 0.0,
-            "z": -1.25
-          },
-          "title": "Library & Study Room",
-          "description": "The library and study area provide students with a quieter environment for studying, completing academic work and preparing for assessments.",
-          "image": "library-study-room",
-          "target_id": "LibraryEntrance",
-          "button_label": "Enter Library"
-        },
-        {
-          "id": "omega_door",
-          "world_position": {
-            "x": -3.09,
-            "y": 0.0,
-            "z": 1.64
-          },
-          "title": "Omega Classroom",
-          "description": "Omega Classroom is an academic teaching area where students can attend lectures and participate in classroom activities.",
-          "image": "omega-classroom",
-          "target_id": "OmegaEntrance",
-          "button_label": "Enter Omega"
-        }
-      ],
-      "links": []
+"hotspots": [
+  {
+    "id": "library_door",
+    "world_position": {
+      "x": -3.27,
+      "y": 0.0,
+      "z": -1.25
+    },
+    "title": "Library & Study Room",
+    "description": "The library and study area provide students with a quieter environment for studying, completing academic work and preparing for assessments.",
+    "image": "library-study-room",
+    "target_id": "LibraryEntrance",
+    "button_label": "Enter Library"
+  },
+  {
+    "id": "omega_door",
+    "world_position": {
+      "x": -3.09,
+      "y": 0.0,
+      "z": 1.64
+    },
+    "title": "Omega Classroom",
+    "description": "Omega Classroom is an academic teaching area where students can attend lectures and participate in classroom activities.",
+    "image": "omega-classroom",
+    "target_id": "OmegaEntrance",
+    "button_label": "Enter Omega"
+  }
+],
+"links": [
+  {
+    "target_id": "Cafeteria2",
+    "yaw": 80,
+    "label": ""
+  },
+  {
+    "target_id": "CafeteriaEntrance",
+    "yaw": 190,
+    "label": ""
+  },
+  {
+    "target_id": "Cafeteria4",
+    "yaw": 0,
+    "label": ""
+  }
+]
     },
     {
       "id": "Cafeteria2",
@@ -96,7 +170,18 @@
       "label": "Cafeteria 2",
       "thumbnail_asset": "cafeteria",
       "hotspots": [],
-      "links": []
+      "links": [
+        {
+          "target_id": "Cafeteria1",
+          "yaw": 270,
+          "label": ""
+        },
+        {
+          "target_id": "Cafeteria3",
+          "yaw": 0,
+          "label": ""
+        }
+      ]
     },
     {
       "id": "Cafeteria3",
@@ -104,49 +189,97 @@
       "label": "Cafeteria 3",
       "thumbnail_asset": "cafeteria",
       "hotspots": [],
-      "links": []
+      "links": [
+        {
+          "target_id": "Cafeteria2",
+          "yaw": 180,
+          "label": ""
+        },
+        {
+          "target_id": "Cafeteria4",
+          "yaw": 270,
+          "label": ""
+        },
+        {
+          "target_id": "Cafeteria5",
+          "yaw": 335,
+          "label": ""
+        }
+      ]
     },
     {
       "id": "Cafeteria4",
       "scene_name": "Tour360",
       "label": "Cafeteria 4",
       "thumbnail_asset": "cafeteria",
-      "hotspots": [
-        {
-          "id": "courtyard_door",
-          "world_position": {
-            "x": -2.39,
-            "y": 0.0,
-            "z": -2.56
-          },
-          "title": "Courtyard",
-          "description": "The courtyard is the open area beside the cafeteria where students can take a break between classes. The Tuckshop is also found here.",
-          "target_id": "Courtyard",
-          "button_label": "Go to Courtyard"
-        }
-      ],
-      "links": []
+"hotspots": [
+  {
+    "id": "courtyard_door",
+    "world_position": {
+      "x": -2.39,
+      "y": 0.0,
+      "z": -2.56
+    },
+    "title": "Courtyard",
+    "description": "The courtyard is the open area beside the cafeteria where students can take a break between classes. The Tuckshop is also found here.",
+    "target_id": "Courtyard",
+    "button_label": "Go to Courtyard"
+  }
+],
+"links": [
+  {
+    "target_id": "Cafeteria3",
+    "yaw": 90,
+    "label": ""
+  },
+  {
+    "target_id": "Cafeteria1",
+    "yaw": 180,
+    "label": ""
+  },
+  {
+    "target_id": "Cafeteria5",
+    "yaw": 0,
+    "label": ""
+  }
+]
     },
     {
       "id": "Cafeteria5",
       "scene_name": "Tour360",
       "label": "Cafeteria 5",
       "thumbnail_asset": "cafeteria",
-      "hotspots": [
-        {
-          "id": "courtyard_door",
-          "world_position": {
-            "x": 2.87,
-            "y": 0.0,
-            "z": -2.01
-          },
-          "title": "Courtyard",
-          "description": "The courtyard is the open area beside the cafeteria where students can take a break between classes. The Tuckshop is also found here.",
-          "target_id": "Courtyard",
-          "button_label": "Go to Courtyard"
-        }
-      ],
-      "links": []
+"hotspots": [
+  {
+    "id": "courtyard_door",
+    "world_position": {
+      "x": 2.87,
+      "y": 0.0,
+      "z": -2.01
+    },
+    "title": "Courtyard",
+    "description": "The courtyard is the open area beside the cafeteria where students can take a break between classes. The Tuckshop is also found here.",
+    "target_id": "Courtyard",
+    "button_label": "Go to Courtyard"
+  }
+],
+"links": [
+  {
+    "target_id": "Cafeteria4",
+    "yaw": 190,
+    "label": ""
+  },
+  {
+    "target_id": "Cafeteria3",
+    "yaw": 140,
+    "label": ""
+  },
+  {
+    "target_id": "Cafeteria6",
+    "yaw": 50,
+    "label": ""
+  }
+]
     },
     {
       "id": "Cafeteria6",
@@ -154,7 +287,23 @@
       "label": "Cafeteria 6",
       "thumbnail_asset": "cafeteria",
       "hotspots": [],
-      "links": []
+      "links": [
+        {
+          "target_id": "Cafeteria5",
+          "yaw": 210,
+          "label": ""
+        },
+        {
+          "target_id": "Cafeteria3",
+          "yaw": 180,
+          "label": ""
+        },
+        {
+          "target_id": "Hallway3",
+          "yaw": 270,
+          "label": "Go Downstairs"
+        }
+      ]
     },
     {
       "id": "CafeteriaEntrance",
@@ -178,9 +327,11 @@
         {
           "id": "library_door",
           "world_position": {
-            "x": -3.41,
-            "y": 0.0,
-            "z": 0.79
+{
+  "x": -3.41,
+  "y": 0.0,
+  "z": 0.79
+}
           },
           "title": "Library & Study Room",
           "description": "The library and study area provide students with a quieter environment for studying, completing academic work and preparing for assessments.",
@@ -189,7 +340,18 @@
           "button_label": "Enter Library"
         }
       ],
-      "links": []
+      "links": [
+        {
+          "target_id": "Cafeteria1",
+          "yaw": 60,
+          "label": ""
+        },
+        {
+          "target_id": "ReceptionArea",
+          "yaw": 180,
+          "label": "Go Downstairs"
+        }
+      ]
     },
     {
       "id": "CampusEntrance",
@@ -197,7 +359,18 @@
       "label": "Campus Entrance",
       "thumbnail_asset": "outside-main-entrance",
       "hotspots": [],
-      "links": []
+      "links": [
+        {
+          "target_id": "ReceptionArea",
+          "yaw": 60,
+          "label": ""
+        },
+        {
+          "target_id": "OutsideEntrance",
+          "yaw": 140,
+          "label": "Leave Building"
+        }
+      ]
     },
     {
       "id": "Courtyard",
@@ -208,9 +381,11 @@
         {
           "id": "tuckshop_info",
           "world_position": {
-            "x": 3.42,
-            "y": 0.0,
-            "z": -0.73
+{
+  "x": 3.42,
+  "y": 0.0,
+  "z": -0.73
+}
           },
           "title": "Cafeteria Tuckshop",
           "description": "The tuckshop forms part of the cafeteria area and provides a convenient facility for students during breaks and throughout the campus day.",
@@ -225,7 +400,23 @@
       "label": "Delta Entrance",
       "thumbnail_asset": "delta-classroom",
       "hotspots": [],
-      "links": []
+      "links": [
+        {
+          "target_id": "DeltaSide",
+          "yaw": 90,
+          "label": ""
+        },
+        {
+          "target_id": "DeltaFront",
+          "yaw": 170,
+          "label": ""
+        },
+        {
+          "target_id": "Hallway2",
+          "yaw": 270,
+          "label": "Leave Delta"
+        }
+      ]
     },
     {
       "id": "DeltaFront",
@@ -233,7 +424,13 @@
       "label": "Delta Front",
       "thumbnail_asset": "delta-classroom",
       "hotspots": [],
-      "links": []
+      "links": [
+        {
+          "target_id": "DeltaEntrance",
+          "yaw": 0,
+          "label": ""
+        }
+      ]
     },
     {
       "id": "DeltaMiddle",
@@ -241,7 +438,13 @@
       "label": "Delta Middle",
       "thumbnail_asset": "delta-classroom",
       "hotspots": [],
-      "links": []
+      "links": [
+        {
+          "target_id": "DeltaSide",
+          "yaw": 350,
+          "label": ""
+        }
+      ]
     },
     {
       "id": "DeltaSide",
@@ -249,7 +452,18 @@
       "label": "Delta Side",
       "thumbnail_asset": "delta-classroom",
       "hotspots": [],
-      "links": []
+      "links": [
+        {
+          "target_id": "DeltaEntrance",
+          "yaw": 270,
+          "label": ""
+        },
+        {
+          "target_id": "DeltaMiddle",
+          "yaw": 165,
+          "label": ""
+        }
+      ]
     },
     {
       "id": "EpsilonAudience",
@@ -257,7 +471,13 @@
       "label": "Epsilon Audience",
       "thumbnail_asset": "lecture-room-auditorium",
       "hotspots": [],
-      "links": []
+      "links": [
+        {
+          "target_id": "EpsilonFront",
+          "yaw": 180,
+          "label": ""
+        }
+      ]
     },
     {
       "id": "EpsilonEntrance",
@@ -265,7 +485,18 @@
       "label": "Epsilon Entrance",
       "thumbnail_asset": "lecture-room-auditorium",
       "hotspots": [],
-      "links": []
+      "links": [
+        {
+          "target_id": "EpsilonFront",
+          "yaw": 290,
+          "label": ""
+        },
+        {
+          "target_id": "Hallway2",
+          "yaw": 105,
+          "label": "Leave Epsilon"
+        }
+      ]
     },
     {
       "id": "EpsilonFront",
@@ -273,7 +504,18 @@
       "label": "Epsilon Front",
       "thumbnail_asset": "lecture-room-auditorium",
       "hotspots": [],
-      "links": []
+      "links": [
+        {
+          "target_id": "EpsilonAudience",
+          "yaw": 350,
+          "label": ""
+        },
+        {
+          "target_id": "EpsilonEntrance",
+          "yaw": 90,
+          "label": ""
+        }
+      ]
     },
     {
       "id": "GammaEntrance",
@@ -281,7 +523,23 @@
       "label": "Gamma Entrance",
       "thumbnail_asset": "gamma-classroom",
       "hotspots": [],
-      "links": []
+      "links": [
+        {
+          "target_id": "GammaFront",
+          "yaw": 80,
+          "label": ""
+        },
+        {
+          "target_id": "GammaSide",
+          "yaw": 160,
+          "label": ""
+        },
+        {
+          "target_id": "Hallway2",
+          "yaw": 280,
+          "label": "Leave Gamma"
+        }
+      ]
     },
     {
       "id": "GammaFront",
@@ -289,7 +547,13 @@
       "label": "Gamma Front",
       "thumbnail_asset": "gamma-classroom",
       "hotspots": [],
-      "links": []
+      "links": [
+        {
+          "target_id": "GammaEntrance",
+          "yaw": 270,
+          "label": ""
+        }
+      ]
     },
     {
       "id": "GammaMiddle",
@@ -297,7 +561,13 @@
       "label": "Gamma Middle",
       "thumbnail_asset": "gamma-classroom",
       "hotspots": [],
-      "links": []
+      "links": [
+        {
+          "target_id": "GammaSide",
+          "yaw": 270,
+          "label": ""
+        }
+      ]
     },
     {
       "id": "GammaSide",
@@ -305,42 +575,64 @@
       "label": "Gamma Side",
       "thumbnail_asset": "gamma-classroom",
       "hotspots": [],
-      "links": []
+      "links": [
+        {
+          "target_id": "GammaEntrance",
+          "yaw": 0,
+          "label": ""
+        },
+        {
+          "target_id": "GammaMiddle",
+          "yaw": 90,
+          "label": ""
+        }
+      ]
     },
     {
       "id": "Hallway1",
       "scene_name": "Tour360",
       "label": "Hallway 1",
       "thumbnail_asset": "",
-      "hotspots": [
-        {
-          "id": "epsilon_door",
-          "world_position": {
-            "x": 3.49,
-            "y": 0.0,
-            "z": -0.24
-          },
-          "title": "Epsilon / Auditorium",
-          "description": "The auditorium is a larger learning and presentation space used for lectures, presentations and other campus activities.",
-          "image": "lecture-room-auditorium",
-          "target_id": "EpsilonEntrance",
-          "button_label": "Enter Epsilon"
-        },
-        {
-          "id": "gamma_door",
-          "world_position": {
-            "x": 2.87,
-            "y": 0.0,
-            "z": -2.01
-          },
-          "title": "Gamma Classroom",
-          "description": "Gamma Classroom provides students with a dedicated environment for lectures, discussions and other academic activities.",
-          "image": "gamma-classroom",
-          "target_id": "GammaEntrance",
-          "button_label": "Enter Gamma"
-        }
-      ],
-      "links": []
+"hotspots": [
+  {
+    "id": "epsilon_door",
+    "world_position": {
+      "x": 3.49,
+      "y": 0.0,
+      "z": -0.24
+    },
+    "title": "Epsilon / Auditorium",
+    "description": "The auditorium is a larger learning and presentation space used for lectures, presentations and other campus activities.",
+    "image": "lecture-room-auditorium",
+    "target_id": "EpsilonEntrance",
+    "button_label": "Enter Epsilon"
+  },
+  {
+    "id": "gamma_door",
+    "world_position": {
+      "x": 2.87,
+      "y": 0.0,
+      "z": -2.01
+    },
+    "title": "Gamma Classroom",
+    "description": "Gamma Classroom provides students with a dedicated environment for lectures, discussions and other academic activities.",
+    "image": "gamma-classroom",
+    "target_id": "GammaEntrance",
+    "button_label": "Enter Gamma"
+  }
+],
+"links": [
+  {
+    "target_id": "Hallway2",
+    "yaw": 0,
+    "label": ""
+  },
+  {
+    "target_id": "ReceptionArea",
+    "yaw": 140,
+    "label": ""
+  }
+]
     },
     {
       "id": "Hallway2",
@@ -364,9 +656,11 @@
         {
           "id": "gamma_door",
           "world_position": {
-            "x": -3.29,
-            "y": 0.0,
-            "z": -1.2
+{
+  "x": -3.29,
+  "y": 0.0,
+  "z": -1.2
+}
           },
           "title": "Gamma Classroom",
           "description": "Gamma Classroom provides students with a dedicated environment for lectures, discussions and other academic activities.",
@@ -377,9 +671,11 @@
         {
           "id": "delta_door",
           "world_position": {
-            "x": 2.76,
-            "y": 0.0,
-            "z": -2.15
+{
+  "x": 2.76,
+  "y": 0.0,
+  "z": -2.15
+}
           },
           "title": "Delta Classroom",
           "description": "Delta Classroom is one of the teaching spaces on the Kempton Park campus and is used for lectures and classroom-based academic activities.",
@@ -388,7 +684,18 @@
           "button_label": "Enter Delta"
         }
       ],
-      "links": []
+      "links": [
+        {
+          "target_id": "Hallway3",
+          "yaw": 0,
+          "label": ""
+        },
+        {
+          "target_id": "Hallway1",
+          "yaw": 170,
+          "label": ""
+        }
+      ]
     },
     {
       "id": "Hallway3",
@@ -396,7 +703,18 @@
       "label": "Hallway 3",
       "thumbnail_asset": "",
       "hotspots": [],
-      "links": []
+      "links": [
+        {
+          "target_id": "Hallway2",
+          "yaw": 180,
+          "label": ""
+        },
+        {
+          "target_id": "Cafeteria6",
+          "yaw": 45,
+          "label": "Go Upstairs"
+        }
+      ]
     },
     {
       "id": "LibraryEntrance",
@@ -404,7 +722,18 @@
       "label": "Library Entrance",
       "thumbnail_asset": "library-study-room",
       "hotspots": [],
-      "links": []
+      "links": [
+        {
+          "target_id": "LibraryMiddle",
+          "yaw": 300,
+          "label": ""
+        },
+        {
+          "target_id": "CafeteriaEntrance",
+          "yaw": 90,
+          "label": "Leave Library"
+        }
+      ]
     },
     {
       "id": "LibraryMiddle",
@@ -412,7 +741,13 @@
       "label": "Library Middle",
       "thumbnail_asset": "library-study-room",
       "hotspots": [],
-      "links": []
+      "links": [
+        {
+          "target_id": "LibraryEntrance",
+          "yaw": 110,
+          "label": ""
+        }
+      ]
     },
     {
       "id": "OmegaEntrance",
@@ -420,7 +755,23 @@
       "label": "Omega Entrance",
       "thumbnail_asset": "omega-classroom",
       "hotspots": [],
-      "links": []
+      "links": [
+        {
+          "target_id": "OmegaSide",
+          "yaw": 355,
+          "label": ""
+        },
+        {
+          "target_id": "OmegaMiddle",
+          "yaw": 295,
+          "label": ""
+        },
+        {
+          "target_id": "CafeteriaEntrance",
+          "yaw": 180,
+          "label": "Leave Omega"
+        }
+      ]
     },
     {
       "id": "OmegaFront",
@@ -428,7 +779,13 @@
       "label": "Omega Front",
       "thumbnail_asset": "omega-classroom",
       "hotspots": [],
-      "links": []
+      "links": [
+        {
+          "target_id": "OmegaSide",
+          "yaw": 110,
+          "label": ""
+        }
+      ]
     },
     {
       "id": "OmegaMiddle",
@@ -436,7 +793,18 @@
       "label": "Omega Middle",
       "thumbnail_asset": "omega-classroom",
       "hotspots": [],
-      "links": []
+      "links": [
+        {
+          "target_id": "OmegaSide",
+          "yaw": 60,
+          "label": ""
+        },
+        {
+          "target_id": "OmegaEntrance",
+          "yaw": 110,
+          "label": ""
+        }
+      ]
     },
     {
       "id": "OmegaSide",
@@ -444,7 +812,23 @@
       "label": "Omega Side",
       "thumbnail_asset": "omega-classroom",
       "hotspots": [],
-      "links": []
+      "links": [
+        {
+          "target_id": "OmegaFront",
+          "yaw": 300,
+          "label": ""
+        },
+        {
+          "target_id": "OmegaMiddle",
+          "yaw": 240,
+          "label": ""
+        },
+        {
+          "target_id": "OmegaEntrance",
+          "yaw": 180,
+          "label": ""
+        }
+      ]
     },
     {
       "id": "OutsideEntrance",
@@ -452,7 +836,18 @@
       "label": "Outside Entrance",
       "thumbnail_asset": "outside-main-entrance",
       "hotspots": [],
-      "links": []
+      "links": [
+        {
+          "target_id": "ParkingLot",
+          "yaw": 80,
+          "label": ""
+        },
+        {
+          "target_id": "CampusEntrance",
+          "yaw": 330,
+          "label": "Enter Building"
+        }
+      ]
     },
     {
       "id": "ParkingLot",
@@ -460,7 +855,13 @@
       "label": "Parking Lot",
       "thumbnail_asset": "campus-parking-area",
       "hotspots": [],
-      "links": []
+      "links": [
+        {
+          "target_id": "OutsideEntrance",
+          "yaw": 200,
+          "label": ""
+        }
+      ]
     }
   ]
 }
