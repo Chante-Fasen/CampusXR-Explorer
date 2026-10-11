@@ -119,6 +119,46 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!21 &32147449
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI/RoundedCorners/RoundedCorners
+  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _WidthHeightRadius: {r: 59.52462, g: 58.750214, b: 50.6, a: 0}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
 --- !u!1 &150764387
 GameObject:
   m_ObjectHideFlags: 0
@@ -1151,7 +1191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 1679972173}
+  m_Material: {fileID: 32147449}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -2490,7 +2530,7 @@ Transform:
   m_GameObject: {fileID: 969196563}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -3.65, y: 0, z: 9.66}
+  m_LocalPosition: {x: -1.196, y: 0, z: 3.12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3352,17 +3392,17 @@ MonoBehaviour:
   markerPrefab: {fileID: 0}
   imageFolder: Assets/Images/Hotspot Popup Images
   hotspotImages:
-  - {fileID: 2800000, guid: b0351a60ea729ae49b55edf61b078160, type: 3}
-  - {fileID: 2800000, guid: eaefcc9c49b1ad64ab873f7e2b02c84d, type: 3}
-  - {fileID: 2800000, guid: 38f073a3260167a4cb38a6262dba821a, type: 3}
-  - {fileID: 2800000, guid: 8eca4274a0ade114f82e85431a7dfe84, type: 3}
-  - {fileID: 2800000, guid: c46f1fceaecad3041936ca19b260912e, type: 3}
-  - {fileID: 2800000, guid: 4ae1e47d7805c454e85763873f49baf7, type: 3}
-  - {fileID: 2800000, guid: 998fc9072e0daf4448bc93ff4e322630, type: 3}
-  - {fileID: 2800000, guid: ceca62e54c8930a44b3596ed75a0eac3, type: 3}
-  - {fileID: 2800000, guid: 7dd5ce842d3d69c4e9b250535d9072d0, type: 3}
-  - {fileID: 2800000, guid: 0d974b91f9c79c743b3667185d371e72, type: 3}
-  - {fileID: 2800000, guid: 90a0e48709807104083a417d687dbb34, type: 3}
+  - {fileID: 2800000, guid: 5f5112bded63a2348a0028fad2c3960b, type: 3}
+  - {fileID: 2800000, guid: 8af73ee62f0c86b4282c3f7374f4242e, type: 3}
+  - {fileID: 2800000, guid: 16f97064578d854409fbda6dec067fe6, type: 3}
+  - {fileID: 2800000, guid: 2c2d76d4fa1de8543a69ee80b081e2b9, type: 3}
+  - {fileID: 2800000, guid: aef6c24f26610764eb305aaff868818a, type: 3}
+  - {fileID: 2800000, guid: e991fad2d77afc94d84aa5c7eb2bd271, type: 3}
+  - {fileID: 2800000, guid: 8e3d7a488c5094f4cbb325dff2c47edd, type: 3}
+  - {fileID: 2800000, guid: 8eba74989c1de1c44848b3c010ac98c5, type: 3}
+  - {fileID: 2800000, guid: eb9b2d9bae3a6494b9a8bdf3da7e1aa0, type: 3}
+  - {fileID: 2800000, guid: 90585c0efd7bf834a99274c8e1013965, type: 3}
+  - {fileID: 2800000, guid: 61a2a511deb034e44b17a5fdbd8e1022, type: 3}
   maxDistanceFromCentre: 4.5
   faceCamera: 1
   markerSize: 0.25
@@ -3967,46 +4007,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
---- !u!21 &1679972173
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: UI/RoundedCorners/RoundedCorners
-  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _ColorMask: 15
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _WidthHeightRadius: {r: 59.52462, g: 58.750214, b: 50.6, a: 0}
-  m_BuildTextureStacks: []
-  m_AllowLocking: 1
 --- !u!1 &1728450976
 GameObject:
   m_ObjectHideFlags: 0
