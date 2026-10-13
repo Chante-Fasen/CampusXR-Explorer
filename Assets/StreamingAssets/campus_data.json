@@ -1,6 +1,25 @@
 {
     "mirror_fixed": true,
   "campus": "Kempton Park",
+  "tour_route": [
+    "OutsideEntrance",
+    "ParkingLot",
+    "CampusEntrance",
+    "ReceptionArea",
+    "AlphaEntrance",
+    "Hallway1",
+    "GammaEntrance",
+    "EpsilonEntrance",
+    "Hallway2",
+    "DeltaEntrance",
+    "Hallway3",
+    "Cafeteria6",
+    "Cafeteria5",
+    "Cafeteria4",
+    "Cafeteria1",
+    "LibraryEntrance",
+    "OmegaEntrance"
+  ],
   "locations": [
     {
       "id": "ReceptionArea",

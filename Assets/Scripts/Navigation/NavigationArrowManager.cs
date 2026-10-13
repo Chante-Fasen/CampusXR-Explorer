@@ -55,6 +55,17 @@ public class NavigationArrowManager : MonoBehaviour
     private readonly List<GameObject> spawnedArrows = new List<GameObject>();
     private static Sprite arrowSprite;
 
+    [Header("Guided tour")]
+    public bool tourGuide = false;
+    private List<string> TourRoute => JsonLoader.LoadedData != null ? JsonLoader.LoadedData.tour_route : null;
+    public Color guideColor = new Color(1f, 0.15f, 0.15f, 1f);
+    public Color guideHoverColor = new Color(1f, 0.5f, 0.5f, 1f);
+    private int tourIndex = 0;
+
+    // Hotspot scripts read this to know which bubble to highlight.
+    public static string GuidedHotspotId { get; private set; }
+    public static event System.Action<string> GuideChanged;
+
     private void Awake()
     {
         if (siteArrivalHandler == null)
@@ -77,6 +88,7 @@ public class NavigationArrowManager : MonoBehaviour
     {
         SceneDataLoader.LocationChanged -= BuildArrows;
         ClearArrows();
+        GuidedHotspotId = null;
     }
 
     // ---------------------------------------------------------------------
@@ -86,6 +98,12 @@ public class NavigationArrowManager : MonoBehaviour
     private void BuildArrows(LocationData location)
     {
         ClearArrows();
+
+        // Work this out first so hotspots still get highlighted at sites with no arrows.
+        Hop guidedHop = (tourGuide && location != null) ? GetNextGuidedHop(location) : null;
+        string guidedTarget = (guidedHop != null && guidedHop.hotspotId == null) ? guidedHop.targetId : null;
+        GuidedHotspotId = guidedHop != null ? guidedHop.hotspotId : null;
+        GuideChanged?.Invoke(GuidedHotspotId);
 
         if (location == null || location.links == null || location.links.Count == 0) return;
 
@@ -130,6 +148,9 @@ public class NavigationArrowManager : MonoBehaviour
             NavigationArrow arrow = arrowObject.GetComponent<NavigationArrow>();
             if (arrow == null) arrow = arrowObject.AddComponent<NavigationArrow>();
             arrow.Setup(this, link);
+
+            if (guidedTarget != null && link.target_id == guidedTarget)
+                ApplyArrowColors(arrowObject, guideColor, guideHoverColor);
 
             spawnedArrows.Add(arrowObject);
         }
@@ -277,5 +298,118 @@ public class NavigationArrowManager : MonoBehaviour
         texture.Apply();
         arrowSprite = Sprite.Create(texture, new Rect(0, 0, size, size), new Vector2(0.5f, 0.5f), 100f);
         return arrowSprite;
+    }
+
+    // ---------------------------------------------------------------------
+    // Guided tour
+    // ---------------------------------------------------------------------
+
+    public void StartTour()
+    {
+        tourGuide = true;
+        tourIndex = 0;
+        if (SceneDataLoader.CurrentLocation != null) BuildArrows(SceneDataLoader.CurrentLocation);
+    }
+
+    public void StopTour()
+    {
+        tourGuide = false;
+        if (SceneDataLoader.CurrentLocation != null) BuildArrows(SceneDataLoader.CurrentLocation);
+    }
+
+    private class Hop
+    {
+        public string targetId;
+        public string hotspotId;   // null = take an arrow, otherwise use this hotspot
+    }
+
+    private Hop GetNextGuidedHop(LocationData current)
+    {
+        List<string> route = TourRoute;
+        if (route == null || route.Count == 0) return null;
+
+        while (tourIndex < route.Count && route[tourIndex] == current.id)
+            tourIndex++;
+
+        if (tourIndex >= route.Count)
+        {
+            Debug.Log("Guided tour finished.");
+            return null;
+        }
+
+        Hop hop = FindFirstHop(current.id, route[tourIndex]);
+        if (hop == null)
+            Debug.LogWarning($"Guided tour: no path from '{current.id}' to '{route[tourIndex]}'. Check the id in tour_route.");
+        return hop;
+    }
+
+    private Hop FindFirstHop(string startId, string goalId)
+    {
+        LocationData start = GetLocation(startId);
+        if (start == null) return null;
+
+        var visited = new HashSet<string> { startId };
+        var firstHop = new Dictionary<string, Hop>();
+        var queue = new Queue<string>();
+
+        void Expand(LocationData from, Hop inherited)
+        {
+            // Arrows first, so they win if a hotspot leads to the same place.
+            if (from.links != null)
+            {
+                foreach (LinkData l in from.links)
+                {
+                    if (l == null || string.IsNullOrEmpty(l.target_id) || !visited.Add(l.target_id)) continue;
+                    firstHop[l.target_id] = inherited ?? new Hop { targetId = l.target_id };
+                    queue.Enqueue(l.target_id);
+                }
+            }
+            if (from.hotspots != null)
+            {
+                foreach (HotspotData h in from.hotspots)
+                {
+                    // Info-only bubbles have no target_id, so they're skipped.
+                    if (h == null || string.IsNullOrEmpty(h.target_id) || !visited.Add(h.target_id)) continue;
+                    firstHop[h.target_id] = inherited ?? new Hop { targetId = h.target_id, hotspotId = h.id };
+                    queue.Enqueue(h.target_id);
+                }
+            }
+        }
+
+        Expand(start, null);
+
+        while (queue.Count > 0)
+        {
+            string id = queue.Dequeue();
+            if (id == goalId) return firstHop[id];
+
+            LocationData loc = GetLocation(id);
+            if (loc != null) Expand(loc, firstHop[id]);
+        }
+        return null;
+    }
+
+    private LocationData GetLocation(string id)
+    {
+        return SceneDataLoader.FindLocationById(id);
+    }
+
+    private void ApplyArrowColors(GameObject arrowObject, Color normal, Color hover)
+    {
+        Button button = arrowObject.GetComponentInChildren<Button>();
+        if (button == null) return;
+
+        ColorBlock colors = button.colors;
+        colors.normalColor = normal;
+        colors.selectedColor = normal;
+        colors.highlightedColor = hover;
+        colors.pressedColor = hover * 0.8f;
+        button.colors = colors;
+    }
+
+    public void ToggleTour()
+    {
+        if (tourGuide) StopTour();
+        else StartTour();
     }
 }

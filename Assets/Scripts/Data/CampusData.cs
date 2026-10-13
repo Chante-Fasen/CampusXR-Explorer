@@ -14,6 +14,7 @@ using System.Collections.Generic;
 public class CampusData
 {
     public string campus;
+    public List<string> tour_route;
     public List<LocationData> locations = new List<LocationData>();
 }
 

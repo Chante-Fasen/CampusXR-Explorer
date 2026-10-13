@@ -83,6 +83,12 @@ public class HotspotManager : MonoBehaviour
     private bool warnedNoAnalytics;
     private static Sprite circleSprite;
 
+    [Header("Guided tour")]
+    public Color guideColor = new Color(1f, 0.15f, 0.15f, 1f);
+    public Color guideHoverColor = new Color(1f, 0.5f, 0.5f, 1f);
+
+    private readonly Dictionary<string, GameObject> markersById = new Dictionary<string, GameObject>();
+
     private void Awake()
     {
         if (siteArrivalHandler == null)
@@ -151,6 +157,7 @@ public class HotspotManager : MonoBehaviour
     private void OnEnable()
     {
         SceneDataLoader.LocationChanged += BuildMarkers;
+        NavigationArrowManager.GuideChanged += ApplyGuide;
 
         if (SceneDataLoader.CurrentLocation != null)
         {
@@ -161,6 +168,7 @@ public class HotspotManager : MonoBehaviour
     private void OnDisable()
     {
         SceneDataLoader.LocationChanged -= BuildMarkers;
+        NavigationArrowManager.GuideChanged -= ApplyGuide;
         ClearMarkers();
     }
 
@@ -235,7 +243,11 @@ public class HotspotManager : MonoBehaviour
             marker.Setup(this, hotspot);
 
             spawnedMarkers.Add(markerObject);
+
+            if (!string.IsNullOrEmpty(hotspot.id)) markersById[hotspot.id] = markerObject;
         }
+
+        ApplyGuide(NavigationArrowManager.GuidedHotspotId);
     }
 
     private void ClearMarkers()
@@ -245,6 +257,8 @@ public class HotspotManager : MonoBehaviour
             if (marker != null) Destroy(marker);
         }
         spawnedMarkers.Clear();
+
+        markersById.Clear();
     }
 
     private Transform GetSiteTransform(string siteId)
@@ -383,5 +397,27 @@ public class HotspotManager : MonoBehaviour
         texture.Apply();
         circleSprite = Sprite.Create(texture, new Rect(0, 0, size, size), new Vector2(0.5f, 0.5f), 100f);
         return circleSprite;
+    }
+
+    private void ApplyGuide(string guidedId)
+    {
+        foreach (KeyValuePair<string, GameObject> pair in markersById)
+        {
+            if (pair.Value == null) continue;
+
+            Button button = pair.Value.GetComponentInChildren<Button>();
+            if (button == null) continue;
+
+            bool guided = guidedId != null && pair.Key == guidedId;
+            Color normal = guided ? guideColor : markerColor;
+            Color hover = guided ? guideHoverColor : markerHoverColor;
+
+            ColorBlock colors = button.colors;
+            colors.normalColor = normal;
+            colors.selectedColor = normal;
+            colors.highlightedColor = hover;
+            colors.pressedColor = hover * 0.8f;
+            button.colors = colors;
+        }
     }
 }
