@@ -47,6 +47,19 @@ public class SceneTransitionManager : MonoBehaviour
     // True while a transition is in flight. Guards against double-clicks.
     public static bool IsTransitioning { get; private set; }
 
+    /// <summary>
+    /// The manager, created on the spot if no scene has made one yet (e.g.
+    /// Free Roam from MainMenu, before SplashScreen has ever loaded).
+    /// </summary>
+    public static SceneTransitionManager GetOrCreate()
+    {
+        if (Instance == null)
+        {
+            new GameObject("SceneTransitionManager").AddComponent<SceneTransitionManager>();
+        }
+        return Instance;
+    }
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
