@@ -9,7 +9,8 @@ using UnityEngine.UI;
 /// Runs the MainMenu flow:  Start  ->  POPIA consent  ->  Selection
 ///   - Accept / Decline saves the visitor's choice (see ConsentManager) and
 ///     moves on to Selection. Declining does NOT block the tour.
-///   - Selection: "Guided Tour" (Enrique) or "Free Roam" (building map).
+///   - Selection: "Guided Tour" (Enrique) or "Free Roam" (Tour360, starting
+///     at the Outside Entrance; the map is a pop-up panel in the tour).
 ///
 /// SETUP (MainMenu scene):
 ///   1. Empty GameObject (e.g. "MainFlow") with this component.
@@ -39,6 +40,13 @@ public class MainMenuFlow : MonoBehaviour
 
     /// <summary>What the visitor picked on the Selection screen.</summary>
     public static TourMode SelectedMode { get; private set; } = TourMode.None;
+
+    /// <summary>
+    /// Set before loading MainMenu to open straight on the Selection screen
+    /// (same visitor coming back from the tour - no second consent prompt).
+    /// Used once, then cleared.
+    /// </summary>
+    public static bool OpenAtSelection { get; set; }
 
     [Header("Canvases (found by name if left empty)")]
     public GameObject mainMenuCanvas;
@@ -71,8 +79,11 @@ public class MainMenuFlow : MonoBehaviour
     public string guidedTourLabel = "Guided Tour";
     public string freeRoamLabel = "Free Roam";
 
-    [Tooltip("Scene loaded for Free Roam (the splash/loading screen, which then opens the building map).")]
-    public string freeRoamSceneName = "SplashScreen";
+    [Tooltip("Free Roam starts in this scene...")]
+    public string freeRoamScene = "Tour360";
+
+    [Tooltip("...at this site (id from campus_data.json). Goes through the loading screen.")]
+    public string freeRoamStartSite = "OutsideEntrance";
 
     [Tooltip("Optional: scene loaded for the Guided Tour. Leave empty if Enrique hooks in via the event below.")]
     public string guidedTourSceneName = "";
@@ -109,7 +120,12 @@ public class MainMenuFlow : MonoBehaviour
 
     private void Start()
     {
-        ShowOnly(mainMenuCanvas);
+        // Same visitor returning from the tour -> back to the two options.
+        // New visitor / app start -> Start screen (then POPIA).
+        bool toSelection = OpenAtSelection && selectionCanvas != null;
+        OpenAtSelection = false;
+
+        ShowOnly(toSelection ? selectionCanvas : mainMenuCanvas);
     }
 
     // ---------------------------------------------------------------------
@@ -154,7 +170,9 @@ public class MainMenuFlow : MonoBehaviour
     public void OnFreeRoam()
     {
         SelectedMode = TourMode.FreeRoam;
-        SceneManager.LoadScene(freeRoamSceneName);
+        // Straight into the tour at the outside entrance (via the loading
+        // screen). The building map is a pop-up panel inside the tour.
+        SceneTransitionManager.GetOrCreate().GoToSite(freeRoamScene, freeRoamStartSite);
     }
 
     private void ShowOnly(GameObject canvas)
