@@ -1,56 +1,81 @@
-using UnityEngine;
-using Firebase.Firestore;
 using System;
+using System.Collections.Generic;
+using UnityEngine;
+using Firebase;
+using Firebase.Extensions;
+using Firebase.Firestore;
 
-// Logs two types of events to Firestore: facility_view (when a
-// scene loads) and hotspot_trigger (when a hotspot is activated).
-// Only logs if the user has given POPIA consent (checked via
-// PlayerPrefs, set by Thierry's consent screen).
+// Logs facility_view and hotspot_trigger events to Firestore.
+// Self-creating: no need to attach to a GameObject.
+// Usage: AnalyticsLogger.LogFacilityView(siteId);
+//        AnalyticsLogger.LogHotspotTrigger(siteId, hotspotId);
 
 public class AnalyticsLogger : MonoBehaviour
 {
-    // Reference to the Firestore database
-    private FirebaseFirestore db;
+    // Must match the key saved by the POPIA consent screen
+    const string ConsentKey = "AnalyticsConsentGiven";
 
-    // Unique ID for this app session, generated once per launch
-    private static string sessionId;
+    static AnalyticsLogger instance;
+    static string sessionId;
 
-    void Awake()
+    FirebaseFirestore db;
+    bool ready;
+    readonly List<Dictionary<string, object>> pending = new List<Dictionary<string, object>>();
+
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    static void Create()
     {
-        // Get a reference to the Firestore database
-        db = FirebaseFirestore.DefaultInstance;
+        // Generate a NEW session ID every time the app launches fresh.
+        // Static fields persist if the app is only paused, so we
+        // explicitly reset it here during startup.
+        sessionId = Guid.NewGuid().ToString();
 
-        // Generate one random session ID per app launch (anonymous,
-        // no personal info - matches POPIA-compliant design from
-        // the project plan)
-        if (string.IsNullOrEmpty(sessionId))
+        var go = new GameObject("AnalyticsLogger");
+        instance = go.AddComponent<AnalyticsLogger>();
+        DontDestroyOnLoad(go);
+    }
+
+    void Start()
+    {
+        // Check Firebase dependencies (required on Android/Quest) before use
+        FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
         {
-            sessionId = Guid.NewGuid().ToString();
+            if (task.Result == DependencyStatus.Available)
+            {
+                db = FirebaseFirestore.DefaultInstance;
+                ready = true;
+                Debug.Log("AnalyticsLogger: Firebase ready");
+                foreach (var e in pending) Send(e);
+                pending.Clear();
+            }
+            else
+            {
+                Debug.LogError("AnalyticsLogger: Firebase unavailable: " + task.Result);
+            }
+        });
+    }
+
+    public static void LogFacilityView(string siteId)
+    {
+        Queue("facility_view", siteId, null);
+    }
+
+    public static void LogHotspotTrigger(string siteId, string hotspotId)
+    {
+        Queue("hotspot_trigger", siteId, hotspotId);
+    }
+
+    static void Queue(string eventType, string sceneId, string hotspotId)
+    {
+        if (instance == null) return;
+
+        if (PlayerPrefs.GetInt(ConsentKey, 0) != 1)
+        {
+            Debug.Log("AnalyticsLogger: no consent, event skipped");
+            return;
         }
-    }
 
-    // Call this when a user enters a 360 environment
-    public void LogFacilityView(string sceneId)
-    {
-        if (!HasConsent()) return;
-
-        LogEvent("facility_view", sceneId, null);
-    }
-
-    // Call this when a user activates a hotspot
-    public void LogHotspotTrigger(string sceneId, string hotspotId)
-    {
-        if (!HasConsent()) return;
-
-        LogEvent("hotspot_trigger", sceneId, hotspotId);
-    }
-
-    // Shared logic for writing an event document to Firestore
-    private void LogEvent(string eventType, string sceneId, string hotspotId)
-    {
-        // Build the event data matching the schema from the
-        // project plan: eventType, timestamp, sceneId, hotspotId, sessionId
-        var eventData = new System.Collections.Generic.Dictionary<string, object>
+        var data = new Dictionary<string, object>
         {
             { "eventType", eventType },
             { "timestamp", Timestamp.GetCurrentTimestamp() },
@@ -59,25 +84,19 @@ public class AnalyticsLogger : MonoBehaviour
             { "sessionId", sessionId }
         };
 
-        // Write it to the "analytics_events" collection in Firestore.
-        // Add() auto-generates a unique document ID for each event.
-        db.Collection("analytics_events").AddAsync(eventData).ContinueWith(task =>
-        {
-            if (task.IsCompletedSuccessfully)
-            {
-                Debug.Log("Analytics event logged: " + eventType);
-            }
-            else
-            {
-                Debug.LogError("Failed to log analytics event: " + task.Exception);
-            }
-        });
+        if (instance.ready) instance.Send(data);
+        else instance.pending.Add(data);
     }
 
-    // Checks whether the user has given POPIA consent.
-    // Assumes Thierry's consent screen saves this key.
-    private bool HasConsent()
+    void Send(Dictionary<string, object> data)
     {
-        return PlayerPrefs.GetInt("AnalyticsConsentGiven", 0) == 1;
+        db.Collection("analytics_events").AddAsync(data).ContinueWithOnMainThread(task =>
+        {
+            if (task.IsCompletedSuccessfully)
+                Debug.Log("AnalyticsLogger: logged " + data["eventType"] +
+                          " | session: " + sessionId);
+            else
+                Debug.LogError("AnalyticsLogger: failed: " + task.Exception);
+        });
     }
 }

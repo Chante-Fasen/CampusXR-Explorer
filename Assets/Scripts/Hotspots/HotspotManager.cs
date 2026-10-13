@@ -79,8 +79,6 @@ public class HotspotManager : MonoBehaviour
 
     private readonly List<GameObject> spawnedMarkers = new List<GameObject>();
     private LocationData currentLocation;
-    private AnalyticsLogger analyticsLogger;
-    private bool warnedNoAnalytics;
     private static Sprite circleSprite;
 
     private void Awake()
@@ -277,23 +275,10 @@ public class HotspotManager : MonoBehaviour
 
     private void LogToAnalytics(HotspotData hotspot)
     {
-        if (analyticsLogger == null)
-        {
-            analyticsLogger = FindAnyObjectByType<AnalyticsLogger>();
-        }
-
-        if (analyticsLogger == null)
-        {
-            if (!warnedNoAnalytics)
-            {
-                Debug.Log("HotspotManager: no AnalyticsLogger in the scene, so hotspot clicks aren't being logged to Firebase.");
-                warnedNoAnalytics = true;
-            }
-            return;
-        }
+      
 
         string siteId = currentLocation != null ? currentLocation.id : "";
-        analyticsLogger.LogHotspotTrigger(siteId, hotspot.id);
+        AnalyticsLogger.LogHotspotTrigger(siteId, hotspot.id);
     }
 
     // ---------------------------------------------------------------------
