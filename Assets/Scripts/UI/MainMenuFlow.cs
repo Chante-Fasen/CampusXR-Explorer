@@ -85,8 +85,11 @@ public class MainMenuFlow : MonoBehaviour
     [Tooltip("...at this site (id from campus_data.json). Goes through the loading screen.")]
     public string freeRoamStartSite = "OutsideEntrance";
 
-    [Tooltip("Optional: scene loaded for the Guided Tour. Leave empty if Enrique hooks in via the event below.")]
-    public string guidedTourSceneName = "";
+    [Tooltip("Guided Tour starts in this scene...")]
+    public string guidedTourSceneName = "Tour360";
+
+    [Tooltip("...at this site (first stop of tour_route). The tour itself is switched on by GuidedTourStarter.")]
+    public string guidedTourStartSite = "OutsideEntrance";
 
     [Tooltip("Enrique: hook the guided tour start here.")]
     public UnityEvent onGuidedTourSelected = new UnityEvent();
@@ -154,17 +157,15 @@ public class MainMenuFlow : MonoBehaviour
     {
         SelectedMode = TourMode.GuidedTour;
 
-        bool hooked = onGuidedTourSelected.GetPersistentEventCount() > 0;
         onGuidedTourSelected.Invoke();
 
-        if (!string.IsNullOrEmpty(guidedTourSceneName))
-        {
-            SceneManager.LoadScene(guidedTourSceneName);
-        }
-        else if (!hooked)
-        {
-            Debug.LogWarning("MainMenuFlow: Guided Tour isn't connected yet - add Enrique's start method to 'On Guided Tour Selected' or set 'Guided Tour Scene Name'.");
-        }
+        // Same loading screen as Free Roam. GuidedTourStarter (Tour Guide
+        // folder) switches the red arrows and voiceovers on at the first site.
+        // (Empty fields fall back to the Free Roam scene / Outside Entrance,
+        // since MainMenu was saved before these defaults existed.)
+        string scene = string.IsNullOrEmpty(guidedTourSceneName) ? freeRoamScene : guidedTourSceneName;
+        string site = string.IsNullOrEmpty(guidedTourStartSite) ? freeRoamStartSite : guidedTourStartSite;
+        SceneTransitionManager.GetOrCreate().GoToSite(scene, site);
     }
 
     public void OnFreeRoam()
