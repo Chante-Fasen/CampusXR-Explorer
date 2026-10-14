@@ -87,6 +87,9 @@ public class SiteArrivalHandler : MonoBehaviour
             // Tell the data side which location we're now at, so hotspots and
             // navigation arrows for this site (from campus_data.json) can show.
             SceneDataLoader.SetCurrentSite(siteId);
+
+            // Log this facility view to Firestore (only if the user consented).
+            AnalyticsLogger.LogFacilityView(siteId);
         }
     }
 }

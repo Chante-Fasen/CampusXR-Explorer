@@ -1,20 +1,22 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
-/// Attach this to the button (or any object with a UI Button / VR-interactable
-/// component) that should send the player to another scene AND straight to
-/// a specific site/hotspot in it.
+/// Attach this to a map button that should send the player to a specific
+/// site (e.g. ButtonAlpha -> Tour360 / AlphaEntrance).
 ///
 /// Setup:
 /// 1. Add this script to your button GameObject.
-/// 2. Fill in "Target Scene Name" (must match the scene name exactly,
-///    and the scene must be added in File > Build Settings > Scenes In Build).
-/// 3. Fill in "Target Site Id" — whatever id your hotspot system uses to
-///    identify that site (e.g. "Library", "Cafeteria_01").
-/// 4. On the Button component's OnClick() list, drag this GameObject in,
-///    then pick SiteRedirectButton > GoToTargetSite().
-///    (If you're using XR Interaction Toolkit, wire this method to the
-///    Interactable's "Select Entered" event instead.)
+/// 2. "Target Scene Name": the scene the site lives in (e.g. Tour360). Must be
+///    in File > Build Settings > Scenes In Build.
+/// 3. "Target Site Id": the site id from campus_data.json (e.g. AlphaEntrance).
+/// 4. On the Button's OnClick(), pick SiteRedirectButton > GoToTargetSite().
+///
+/// Behaviour:
+///   - Map panel INSIDE Tour360: switches the photo instantly (no loading)
+///     and closes the map panel.
+///   - From another scene: loads the target scene (with the loading screen)
+///     and lands on the site.
 /// </summary>
 public class SiteRedirectButton : MonoBehaviour
 {
@@ -27,12 +29,29 @@ public class SiteRedirectButton : MonoBehaviour
     // Hook this up to the Button's OnClick event in the Inspector.
     public void GoToTargetSite()
     {
-        if (SceneTransitionManager.Instance == null)
+        bool sameScene = string.IsNullOrEmpty(targetSceneName)
+                         || targetSceneName == SceneManager.GetActiveScene().name;
+
+        // Already in the right scene: switch the photo directly.
+        if (sameScene && !string.IsNullOrEmpty(targetSiteId))
         {
-            Debug.LogError("SceneTransitionManager not found. Make sure it exists in your first/bootstrap scene.");
+            SiteArrivalHandler handler = FindAnyObjectByType<SiteArrivalHandler>();
+            if (handler != null && handler.HasSite(targetSiteId))
+            {
+                handler.ActivateSite(targetSiteId);
+
+                TourPanel panel = GetComponentInParent<TourPanel>(true);
+                if (panel != null) panel.Hide();
+                return;
+            }
+        }
+
+        if (string.IsNullOrEmpty(targetSceneName))
+        {
+            Debug.LogWarning($"SiteRedirectButton on '{name}': no Target Scene Name and site '{targetSiteId}' isn't in this scene.");
             return;
         }
 
-        SceneTransitionManager.Instance.GoToSite(targetSceneName, targetSiteId);
+        SceneTransitionManager.GetOrCreate().GoToSite(targetSceneName, targetSiteId);
     }
 }
