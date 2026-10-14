@@ -8,24 +8,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scene Materials/MainMenu.unity
     guid: 4722342df94420b4aa70f269fec85830
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 0
-    path: Assets/Scenes/LoadingScreen.unity
-    guid: 039ab06dbae722a47b076535e88a4ae4
   - enabled: 1
     path: Assets/Scene Materials/Tour360.unity
     guid: d3990d5fff0adc94aa08a998dad46b5b
   - enabled: 1
     path: Assets/Scene Materials/SplashScreen.unity
     guid: 88d7b6f431385a24399769786bb46302
-  - enabled: 1
-    path: Assets/Scenes/SettingsHelp.unity
-    guid: 0846a282e95df964b8e36418c12cabc8
-  - enabled: 1
-    path: Assets/Scenes/BuildingMap.unity
-    guid: ef6fe7a4e2ca1594faa860c2c170f21f
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

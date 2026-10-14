@@ -110,16 +110,27 @@ public class HotspotManager : MonoBehaviour
         RefreshHotspotImages();
     }
 
-    // ...and whenever it's empty (e.g. after pulling from Git).
+    // ...and whenever it's empty or has broken entries (e.g. after a Git
+    // merge re-created the images with new ids, which shows as "Missing").
     private void OnValidate()
     {
-        if (hotspotImages == null || hotspotImages.Count == 0)
+        if (ImageListNeedsRefresh())
         {
             UnityEditor.EditorApplication.delayCall += () =>
             {
-                if (this != null && (hotspotImages == null || hotspotImages.Count == 0)) RefreshHotspotImages();
+                if (this != null && ImageListNeedsRefresh()) RefreshHotspotImages();
             };
         }
+    }
+
+    private bool ImageListNeedsRefresh()
+    {
+        if (hotspotImages == null || hotspotImages.Count == 0) return true;
+        foreach (Texture2D texture in hotspotImages)
+        {
+            if (texture == null) return true; // "Missing" reference
+        }
+        return false;
     }
 
     [ContextMenu("Refresh Hotspot Images")]
