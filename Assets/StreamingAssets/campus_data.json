@@ -15,6 +15,7 @@
     "Hallway3",
     "Cafeteria6",
     "Cafeteria5",
+    "Courtyard",
     "Cafeteria4",
     "Cafeteria1",
     "LibraryEntrance",
@@ -392,6 +393,7 @@
     },
     {
       "id": "Courtyard",
+      "voiceover":  "courtyard",
       "scene_name": "Tour360",
       "label": "Courtyard",
       "thumbnail_asset": "",
