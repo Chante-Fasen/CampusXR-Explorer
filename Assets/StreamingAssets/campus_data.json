@@ -360,7 +360,7 @@
       "links": [
         {
           "target_id": "Cafeteria1",
-          "yaw": 60,
+          "yaw": 25,
           "label": ""
         },
         {
@@ -408,7 +408,13 @@
           "image": "cafeteria-tuckshop"
         }
       ],
-      "links": []
+      "links": [
+        {
+          "target_id": "Cafeteria5",
+          "yaw": 120,
+          "label": "Leave Courtyard"
+        }
+      ]
     },
     {
       "id": "DeltaEntrance",
@@ -785,7 +791,7 @@
         },
         {
           "target_id": "CafeteriaEntrance",
-          "yaw": 180,
+          "yaw": 110,
           "label": "Leave Omega"
         }
       ]
