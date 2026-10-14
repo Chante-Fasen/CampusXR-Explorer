@@ -44,6 +44,13 @@ public static class ConsentManager
     public static string SessionId { get; private set; }
     public static bool IsLoggedIn => _sessionRef != null;
 
+    /// <summary>True while the anonymous login for this visitor is running.</summary>
+    public static bool IsLoggingIn => _loggingIn;
+
+    /// <summary>Raised when a login attempt ends (successful or not). AnalyticsLogger
+    /// holds events until then so they carry this visitor's ids.</summary>
+    public static event Action LoginFinished;
+
     static DocumentReference _sessionRef;
     static bool _loggingIn;
     static Task _pendingSignOut;   // previous visitor still being signed out
@@ -190,6 +197,7 @@ public static class ConsentManager
         finally
         {
             _loggingIn = false;
+            LoginFinished?.Invoke();
         }
     }
 

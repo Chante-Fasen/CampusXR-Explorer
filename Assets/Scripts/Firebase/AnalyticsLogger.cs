@@ -9,6 +9,12 @@ using Firebase.Firestore;
 // Self-creating: no need to attach to a GameObject.
 // Usage: AnalyticsLogger.LogFacilityView(siteId);
 //        AnalyticsLogger.LogHotspotTrigger(siteId, hotspotId);
+//
+// Each event carries the visitor's ids from the POPIA login (ConsentManager):
+//   userId    - the visitor's anonymous Firebase user (users/{userId})
+//   sessionId - this visit (sessions/{sessionId}); a new one per visitor
+//   launchId  - the app launch, used as sessionId if the login failed
+//               (e.g. no internet or Anonymous sign-in disabled)
 
 public class AnalyticsLogger : MonoBehaviour
 {
@@ -16,7 +22,7 @@ public class AnalyticsLogger : MonoBehaviour
     const string ConsentKey = "AnalyticsConsentGiven";
 
     static AnalyticsLogger instance;
-    static string sessionId;
+    static string launchId;
 
     FirebaseFirestore db;
     bool ready;
@@ -25,14 +31,24 @@ public class AnalyticsLogger : MonoBehaviour
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     static void Create()
     {
-        // Generate a NEW session ID every time the app launches fresh.
+        // Generate a NEW launch ID every time the app launches fresh.
         // Static fields persist if the app is only paused, so we
         // explicitly reset it here during startup.
-        sessionId = Guid.NewGuid().ToString();
+        launchId = Guid.NewGuid().ToString();
 
         var go = new GameObject("AnalyticsLogger");
         instance = go.AddComponent<AnalyticsLogger>();
         DontDestroyOnLoad(go);
+    }
+
+    void OnEnable()
+    {
+        ConsentManager.LoginFinished += Flush;
+    }
+
+    void OnDisable()
+    {
+        ConsentManager.LoginFinished -= Flush;
     }
 
     void Start()
@@ -45,8 +61,7 @@ public class AnalyticsLogger : MonoBehaviour
                 db = FirebaseFirestore.DefaultInstance;
                 ready = true;
                 Debug.Log("AnalyticsLogger: Firebase ready");
-                foreach (var e in pending) Send(e);
-                pending.Clear();
+                Flush();
             }
             else
             {
@@ -81,11 +96,28 @@ public class AnalyticsLogger : MonoBehaviour
             { "timestamp", Timestamp.GetCurrentTimestamp() },
             { "sceneId", sceneId },
             { "hotspotId", hotspotId },
-            { "sessionId", sessionId }
+            { "launchId", launchId }
         };
 
-        if (instance.ready) instance.Send(data);
-        else instance.pending.Add(data);
+        instance.pending.Add(data);
+        instance.Flush();
+    }
+
+    // Sends waiting events once Firebase is ready and the visitor's login has
+    // finished, so the first events of a visit get the right ids too.
+    void Flush()
+    {
+        if (!ready || ConsentManager.IsLoggingIn) return;
+
+        foreach (var data in pending)
+        {
+            // Ids are added at send time: the login may have finished after
+            // the event was queued.
+            data["userId"] = ConsentManager.UserId;
+            data["sessionId"] = ConsentManager.SessionId ?? launchId;
+            Send(data);
+        }
+        pending.Clear();
     }
 
     void Send(Dictionary<string, object> data)
@@ -94,7 +126,7 @@ public class AnalyticsLogger : MonoBehaviour
         {
             if (task.IsCompletedSuccessfully)
                 Debug.Log("AnalyticsLogger: logged " + data["eventType"] +
-                          " | session: " + sessionId);
+                          " | session: " + data["sessionId"]);
             else
                 Debug.LogError("AnalyticsLogger: failed: " + task.Exception);
         });
