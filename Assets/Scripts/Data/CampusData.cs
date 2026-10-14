@@ -25,6 +25,7 @@ public class LocationData
     public string scene_name;      // Unity scene the site lives in, e.g. "Tour360"
     public string label;           // display name shown to user, e.g. "Reception"
     public string thumbnail_asset; // image used for this location in menus/map
+    public string voiceover;       // voiceover for tour guide
     public List<HotspotData> hotspots = new List<HotspotData>();
     public List<LinkData> links = new List<LinkData>(); // navigation arrows to other sites
 }

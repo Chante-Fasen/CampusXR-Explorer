@@ -65,6 +65,11 @@ public class NavigationArrowManager : MonoBehaviour
     // Hotspot scripts read this to know which bubble to highlight.
     public static string GuidedHotspotId { get; private set; }
     public static event System.Action<string> GuideChanged;
+    
+    public static event System.Action TourStarted;
+    public static event System.Action TourStopped;
+    public static event System.Action TourFinished;
+    private bool tourFinishedFired;
 
     private void Awake()
     {
@@ -308,12 +313,15 @@ public class NavigationArrowManager : MonoBehaviour
     {
         tourGuide = true;
         tourIndex = 0;
+        tourFinishedFired = false;
+        TourStarted?.Invoke();
         if (SceneDataLoader.CurrentLocation != null) BuildArrows(SceneDataLoader.CurrentLocation);
     }
 
     public void StopTour()
     {
         tourGuide = false;
+        TourStopped?.Invoke();
         if (SceneDataLoader.CurrentLocation != null) BuildArrows(SceneDataLoader.CurrentLocation);
     }
 
@@ -333,7 +341,12 @@ public class NavigationArrowManager : MonoBehaviour
 
         if (tourIndex >= route.Count)
         {
-            Debug.Log("Guided tour finished.");
+            if (!tourFinishedFired)
+            {
+                tourFinishedFired = true;
+                Debug.Log("Guided tour finished.");
+                TourFinished?.Invoke();
+            }
             return null;
         }
 

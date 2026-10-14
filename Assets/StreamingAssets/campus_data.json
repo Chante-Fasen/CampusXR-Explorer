@@ -61,6 +61,7 @@
     },
     {
       "id": "AlphaEntrance",
+      "voiceover": "alpha-entrance",
       "scene_name": "Tour360",
       "label": "Alpha Entrance",
       "thumbnail_asset": "alpha-classroom",
@@ -300,6 +301,7 @@
     },
     {
       "id": "Cafeteria6",
+      "voiceover": "cafeteria-6",
       "scene_name": "Tour360",
       "label": "Cafeteria 6",
       "thumbnail_asset": "cafeteria",
@@ -370,6 +372,7 @@
     },
     {
       "id": "CampusEntrance",
+      "voiceover": "campus-entrance",
       "scene_name": "Tour360",
       "label": "Campus Entrance",
       "thumbnail_asset": "outside-main-entrance",
@@ -409,6 +412,7 @@
     },
     {
       "id": "DeltaEntrance",
+      "voiceover": "delta-entrance",
       "scene_name": "Tour360",
       "label": "Delta Entrance",
       "thumbnail_asset": "delta-classroom",
@@ -494,6 +498,7 @@
     },
     {
       "id": "EpsilonEntrance",
+      "voiceover": "epsilon-entrance",
       "scene_name": "Tour360",
       "label": "Epsilon Entrance",
       "thumbnail_asset": "lecture-room-auditorium",
@@ -532,6 +537,7 @@
     },
     {
       "id": "GammaEntrance",
+      "voiceover": "gamma-entrance",
       "scene_name": "Tour360",
       "label": "Gamma Entrance",
       "thumbnail_asset": "gamma-classroom",
@@ -727,6 +733,7 @@
     },
     {
       "id": "LibraryEntrance",
+      "voiceover": "library-entrance",
       "scene_name": "Tour360",
       "label": "Library Entrance",
       "thumbnail_asset": "library-study-room",
@@ -760,6 +767,7 @@
     },
     {
       "id": "OmegaEntrance",
+      "voiceover": "omega-entrance",
       "scene_name": "Tour360",
       "label": "Omega Entrance",
       "thumbnail_asset": "omega-classroom",
@@ -841,6 +849,7 @@
     },
     {
       "id": "OutsideEntrance",
+      "voiceover": "outside-entrance",
       "scene_name": "Tour360",
       "label": "Outside Entrance",
       "thumbnail_asset": "outside-main-entrance",
@@ -860,6 +869,7 @@
     },
     {
       "id": "ParkingLot",
+      "voiceover": "parking-lot",
       "scene_name": "Tour360",
       "label": "Parking Lot",
       "thumbnail_asset": "campus-parking-area",
