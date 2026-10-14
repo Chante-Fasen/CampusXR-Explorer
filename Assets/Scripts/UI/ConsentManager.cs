@@ -25,8 +25,9 @@ public static class ConsentManager
     // Change this whenever your POPIA text changes.
     public const string PolicyVersion = "v1.0";
 
-    // Set to true if several people share one headset (each visitor gets a fresh ID).
-    public const bool SignOutWhenSessionEnds = false;
+    // Open Day: many visitors share one headset, so each visitor gets a fresh
+    // anonymous ID when the tour is ended ("End Tour" -> ResetConsent).
+    public const bool SignOutOnNewVisitor = true;
 
     /// <summary>Raised whenever the visitor accepts or declines.</summary>
     public static event Action<bool> ConsentChanged;
@@ -45,6 +46,7 @@ public static class ConsentManager
 
     static DocumentReference _sessionRef;
     static bool _loggingIn;
+    static Task _pendingSignOut;   // previous visitor still being signed out
 
     // ---------- Consent ----------
 
@@ -70,7 +72,9 @@ public static class ConsentManager
         PlayerPrefs.DeleteKey(AnsweredKey);
         PlayerPrefs.Save();
 
-        EndSession();   // withdrawing consent stops tracking immediately
+        // Withdrawing consent / handing the headset to someone new stops
+        // tracking immediately, and the next visitor gets their own ID.
+        EndSession(SignOutOnNewVisitor);
     }
 
     // ---------- Startup hooks (no GameObject needed) ----------
@@ -86,9 +90,10 @@ public static class ConsentManager
         Application.focusChanged += OnFocusChanged;
 #endif
 
-        // Returning visitor who already accepted on this device: log in silently.
-        if (HasConsent)
-            LoginAfterConsent();
+        // No automatic login at launch: every visitor is asked on the POPIA
+        // screen (MainMenuFlow "Ask Every Time"), and the login only starts
+        // when THIS visitor presses Accept. Otherwise the previous visitor's
+        // answer would create a session before the new one has agreed.
     }
 
     static void OnQuitting()
@@ -115,6 +120,10 @@ public static class ConsentManager
 
         try
         {
+            // "End Tour" may still be closing the previous visitor's session -
+            // wait so this visitor doesn't reuse their anonymous ID.
+            if (_pendingSignOut != null) await _pendingSignOut;
+
             // Make sure Firebase is ready
             var status = await FirebaseApp.CheckAndFixDependenciesAsync();
             if (status != DependencyStatus.Available)
@@ -184,15 +193,41 @@ public static class ConsentManager
         }
     }
 
-    public static void EndSession()
+    /// <param name="signOut">True when a new visitor takes over: forget this
+    /// visitor's anonymous ID so the next one gets a new user record.</param>
+    public static void EndSession(bool signOut = false)
     {
-        if (_sessionRef == null) return;
+        Task closing = Task.CompletedTask;
 
-        _sessionRef.UpdateAsync("endTime", FieldValue.ServerTimestamp);
-        _sessionRef = null;
-        SessionId = null;
+        if (_sessionRef != null)
+        {
+            closing = _sessionRef.UpdateAsync("endTime", FieldValue.ServerTimestamp);
+            _sessionRef = null;
+            SessionId = null;
+        }
 
-        if (SignOutWhenSessionEnds)
-            FirebaseAuth.DefaultInstance.SignOut();
+        if (signOut && UserId != null)   // only if this visitor actually logged in
+        {
+            UserId = null;
+            _pendingSignOut = SignOutAfter(closing);
+        }
+    }
+
+    // Sign out only AFTER the endTime write has gone through: Firestore sends
+    // writes as the signed-in user, so signing out first would leave the
+    // session without an end time (the rules only let its owner update it).
+    static async Task SignOutAfter(Task closing)
+    {
+        try
+        {
+            // Don't hold the next visitor up if the headset is offline.
+            Task first = await Task.WhenAny(closing, Task.Delay(5000));
+            if (first == closing) await closing;
+        }
+        catch (Exception e) { Debug.LogWarning("Could not save session end time: " + e.Message); }
+
+        try { FirebaseAuth.DefaultInstance.SignOut(); }
+        catch (Exception e) { Debug.LogWarning("Sign-out failed: " + e.Message); }
+        finally { _pendingSignOut = null; }
     }
 }
