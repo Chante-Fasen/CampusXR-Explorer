@@ -4,6 +4,7 @@ using System.Collections;
 
 /// Plays the "voiceover" clip of a location when the player arrives there
 /// during a guided tour. Each clip plays once per tour.
+/// Clips go through AudioManager, so they can be paused/stopped from anywhere.
 public class TourVoiceover : MonoBehaviour
 {
     [Tooltip("Folder inside a Resources folder that holds the clips.")]
@@ -15,18 +16,15 @@ public class TourVoiceover : MonoBehaviour
     [Tooltip("Clip (in the same Resources folder) played after the last stop's voiceover.")]
     public string conclusionClip = "tour-conclusion";
 
-    private AudioSource source;
     private NavigationArrowManager manager;
     private readonly HashSet<string> played = new HashSet<string>();
 
     private void Awake()
     {
         manager = FindAnyObjectByType<NavigationArrowManager>();
-
-        source = gameObject.AddComponent<AudioSource>();
-        source.playOnAwake = false;
-        source.spatialBlend = 0f;
     }
+
+    private static AudioManager Audio => AudioManager.Instance;
 
     private void OnEnable()
     {
@@ -42,6 +40,10 @@ public class TourVoiceover : MonoBehaviour
         NavigationArrowManager.TourStarted -= OnTourStarted;
         NavigationArrowManager.TourStopped -= OnTourStopped;
         NavigationArrowManager.TourFinished -= OnTourFinished;
+
+        // Leaving the tour scene (Change Mode / End Tour): AudioManager lives
+        // on between scenes, so stop the narration here.
+        if (Audio != null) Audio.StopNarration();
     }
 
     private void OnTourStarted()
@@ -54,14 +56,14 @@ public class TourVoiceover : MonoBehaviour
     private void OnTourStopped()
     {
         StopAllCoroutines();
-        source.Stop();
+        if (Audio != null) Audio.StopNarration();
     }
 
     private void OnLocationChanged(LocationData location)
     {
         if (manager == null || !manager.tourGuide) return;
 
-        if (stopWhenLeaving) source.Stop();
+        if (stopWhenLeaving && Audio != null) Audio.StopNarration();
         TryPlay(location);
     }
 
@@ -77,10 +79,10 @@ public class TourVoiceover : MonoBehaviour
             return;
         }
 
+        if (Audio == null) return;
+
         played.Add(location.id);
-        source.Stop();          // a new clip replaces any one still playing
-        source.clip = clip;
-        source.Play();
+        Audio.PlayNarration(clip);   // a new clip replaces any one still playing
     }
 
     private void OnTourFinished()
@@ -91,7 +93,7 @@ public class TourVoiceover : MonoBehaviour
     private IEnumerator PlayConclusion()
     {
         yield return null;                              // let the last stop's own clip start first
-        while (source.isPlaying) yield return null;     // then wait for it to finish
+        while (Audio != null && Audio.IsBusy) yield return null;   // then wait for it to finish (or be stopped)
 
         AudioClip clip = Resources.Load<AudioClip>(resourcesFolder + "/" + conclusionClip);
         if (clip == null)
@@ -100,7 +102,6 @@ public class TourVoiceover : MonoBehaviour
             yield break;
         }
 
-        source.clip = clip;
-        source.Play();
+        if (Audio != null) Audio.PlayNarration(clip);
     }
 }

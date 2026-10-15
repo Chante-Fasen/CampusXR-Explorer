@@ -23,6 +23,14 @@ public class SettingsPanel : TourPanel
     [Tooltip("Leave empty to use the first Slider whose name contains 'Volume'.")]
     public Slider volumeSlider;
 
+    /// <summary>Back to full volume, e.g. for the next visitor ("End Tour").</summary>
+    public static void ResetVolume()
+    {
+        PlayerPrefs.SetFloat(VolumeKey, 1f);
+        PlayerPrefs.Save();
+        AudioListener.volume = 1f;
+    }
+
     // Apply the saved volume as soon as the game starts, in every scene.
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
     private static void ApplySavedVolume()

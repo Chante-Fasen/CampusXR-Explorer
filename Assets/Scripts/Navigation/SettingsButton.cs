@@ -78,8 +78,9 @@ public static class SettingsNavigator
 ///   Main Menu            - same visitor: back to the Selection screen
 ///                          (Guided Tour / Free Roam), consent is kept
 ///   New Visitor          - hand the headset to someone new: back to the
-///                          Start screen and their consent is cleared, so
-///                          the next person is asked
+///                          Start screen, their consent is cleared (so the
+///                          next person is asked) and the volume goes back
+///                          to 100%
 ///   Open Map             - the tour's Map button (toggles the map panel;
 ///                          loads the BuildingMap scene if there's no
 ///                          MapPanel in this scene)
@@ -142,6 +143,7 @@ public class SettingsButton : MonoBehaviour
 
             case Action.NewVisitor:
                 ConsentManager.ResetConsent();
+                SettingsPanel.ResetVolume();   // next visitor starts at full volume
                 MainMenuFlow.OpenAtSelection = false;
                 SceneManager.LoadScene(mainMenuSceneName);
                 break;

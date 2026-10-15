@@ -58,7 +58,7 @@ public class SplashScreenLoader : MonoBehaviour
 
         // We drive the slider ourselves - stop the old timed animation.
         // (Disabling in Awake means its Start never runs.)
-        foreach (SliderController controller in FindObjectsByType<SliderController>(FindObjectsSortMode.None))
+        foreach (SliderController controller in FindObjectsByType<SliderController>())
         {
             controller.enabled = false;
         }

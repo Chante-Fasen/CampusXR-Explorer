@@ -1,18 +1,45 @@
 using UnityEngine;
 
-// TEMPORARY placeholder so NarrationControls compiles.
-// Michael owns the real implementation - DELETE THIS FILE when his lands,
-// or you will get a duplicate class definition error.
+/// <summary>
+/// Plays the tour narration (guided-tour voice-overs) through one shared
+/// AudioSource, so anything can pause, resume or stop it - e.g.
+/// NarrationControls' buttons.
+///
+/// No setup needed: it creates itself when the game starts and survives
+/// scene loads. Volume follows the Settings slider (AudioListener.volume).
+///
+///   AudioManager.Instance.PlayNarration(clip);
+///   AudioManager.Instance.PauseNarration() / ResumeNarration() / StopNarration();
+///   AudioManager.Instance.IsPlaying / IsPaused / IsBusy
+/// </summary>
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager Instance;
+    public static AudioManager Instance { get; private set; }
 
-    [SerializeField] private AudioSource narrationSource;
+    private AudioSource narrationSource;
 
-    public bool IsPlaying { get { return narrationSource != null && narrationSource.isPlaying; } }
+    /// <summary>A clip is currently audible.</summary>
+    public bool IsPlaying => narrationSource != null && narrationSource.isPlaying;
+
+    /// <summary>A clip was paused and can be resumed.</summary>
     public bool IsPaused { get; private set; }
 
-    void Awake()
+    /// <summary>Playing or paused - i.e. a clip hasn't finished yet.</summary>
+    public bool IsBusy => IsPlaying || IsPaused;
+
+    public AudioClip CurrentClip => narrationSource != null ? narrationSource.clip : null;
+
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    private static void Create()
+    {
+        if (Instance != null) return;
+
+        GameObject go = new GameObject("AudioManager");
+        go.AddComponent<AudioManager>();
+        DontDestroyOnLoad(go);
+    }
+
+    private void Awake()
     {
         if (Instance != null && Instance != this)
         {
@@ -20,15 +47,23 @@ public class AudioManager : MonoBehaviour
             return;
         }
         Instance = this;
-        DontDestroyOnLoad(gameObject);
 
-        if (narrationSource == null)
-            narrationSource = gameObject.AddComponent<AudioSource>();
+        narrationSource = gameObject.AddComponent<AudioSource>();
+        narrationSource.playOnAwake = false;
+        narrationSource.loop = false;
+        narrationSource.spatialBlend = 0f;   // 2D: same volume wherever the player looks
+    }
+
+    private void OnDestroy()
+    {
+        if (Instance == this) Instance = null;
     }
 
     public void PlayNarration(AudioClip clip)
     {
         if (clip == null) return;
+
+        narrationSource.Stop();              // a new clip replaces any one still playing
         narrationSource.clip = clip;
         narrationSource.Play();
         IsPaused = false;

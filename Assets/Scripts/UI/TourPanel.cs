@@ -151,7 +151,7 @@ public class TourPanel : MonoBehaviour
     /// <summary>Close whichever panel is open (if any).</summary>
     public static void CloseAll()
     {
-        foreach (TourPanel panel in Object.FindObjectsByType<TourPanel>(FindObjectsInactive.Include, FindObjectsSortMode.None))
+        foreach (TourPanel panel in Object.FindObjectsByType<TourPanel>(FindObjectsInactive.Include))
         {
             if (panel.IsOpen) panel.Hide();
         }
